@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>重庆旅行计划 · 怀化出发</title>
+<title>重庆旅行计划 · 怀化出发 · K202次</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -19,6 +19,24 @@
   .stats { display:flex; gap:56px; justify-content:center; flex-wrap:wrap; }
   .stat-n { font-size:42px; font-weight:900; color:#fff; }
   .stat-l { font-size:12px; color:rgba(255,255,255,.5); letter-spacing:2px; text-transform:uppercase; }
+
+  /* ===== TRAIN INFO ===== */
+  .train-wrap { max-width:1100px; margin:0 auto; padding:70px 24px 0; }
+  .train-box { background:linear-gradient(135deg,rgba(255,107,53,.08),rgba(168,85,247,.05)); border:1px solid rgba(255,107,53,.25); border-radius:18px; padding:30px 34px; }
+  .train-title { font-size:13px; letter-spacing:3px; color:#ff6b35; text-transform:uppercase; margin-bottom:18px; font-weight:700; }
+  .train-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .train-col h4 { font-size:15px; font-weight:700; margin-bottom:12px; color:#fff; }
+  .train-route { display:flex; align-items:center; gap:14px; margin-bottom:10px; flex-wrap:wrap; }
+  .t-station { text-align:center; }
+  .t-time { font-size:24px; font-weight:900; color:#ffd08a; }
+  .t-name { font-size:12px; color:rgba(255,255,255,.55); }
+  .t-line { flex:1; min-width:60px; text-align:center; font-size:11px; color:rgba(255,255,255,.4); position:relative; padding-top:2px; }
+  .t-line::before { content:''; display:block; height:1px; background:linear-gradient(90deg,transparent,#ff6b35,transparent); margin-bottom:6px; }
+  .train-note { font-size:12px; color:rgba(255,255,255,.5); line-height:1.9; }
+  .train-alert { margin-top:16px; padding:12px 16px; border-radius:10px; background:rgba(255,80,80,.1); border:1px solid rgba(255,80,80,.3); font-size:13px; color:#ff9a9a; line-height:1.8; }
+  .train-back { margin-top:14px; font-size:12px; color:rgba(255,255,255,.5); line-height:2; }
+  .train-back b { color:rgba(255,255,255,.8); font-weight:500; }
+  .train-back code { background:rgba(255,255,255,.08); padding:1px 8px; border-radius:6px; font-size:11px; color:#ffd08a; }
 
   .sec { max-width:1100px; margin:0 auto; padding:80px 24px; }
   .sec-t { font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#ff6b35; margin-bottom:10px; }
@@ -128,6 +146,7 @@
     .card{grid-template-columns:1fr} .card-img-wrap{min-height:170px}
     .tl{padding-left:44px} .dot{left:-36px;width:36px;height:36px;font-size:12px}
     .stats{gap:28px} .m-gallery{height:260px} .m-body{padding:22px 20px 30px}
+    .train-grid{grid-template-columns:1fr} .train-box{padding:24px 20px}
   }
   ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-track{background:#08080d} ::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
@@ -142,7 +161,7 @@
   <div class="hero-c">
     <div class="badge">CHONGQING · 重庆 · 2026</div>
     <h1>山城之旅</h1>
-    <p class="hero-sub">怀化夜车出发 · 早9点抵重庆西站 · 4天3晚 · 两人同行</p>
+    <p class="hero-sub">K202次 · 早10:16抵重庆北站 · 4天3晚 · 两人同行</p>
     <div class="stats">
       <div><div class="stat-n">4</div><div class="stat-l">天</div></div>
       <div><div class="stat-n">¥2k</div><div class="stat-l">人均预算</div></div>
@@ -152,16 +171,46 @@
   </div>
 </section>
 
+<!-- ===== TRAIN INFO ===== -->
+<div class="train-wrap">
+  <div class="train-box">
+    <div class="train-title">🚄 车次信息 · 以12306实际售票为准</div>
+    <div class="train-grid">
+      <div class="train-col">
+        <h4>去程 · K202次（广州白云→重庆北，经停怀化）</h4>
+        <div class="train-route">
+          <div class="t-station"><div class="t-time">02:38</div><div class="t-name">怀化 发车</div></div>
+          <div class="t-line">K202 · 约7小时40分 · 硬卧</div>
+          <div class="t-station"><div class="t-time">10:16</div><div class="t-name">重庆北 到达</div></div>
+        </div>
+        <div class="train-note">经停：黔江 06:42 → 彭水 07:30 → 武隆 08:08 → 重庆北 10:16。凌晨上车硬卧正好补觉，天亮后车窗外是武陵山区风光。</div>
+      </div>
+      <div class="train-col">
+        <h4>返程 · 重庆北 → 怀化 可选车次</h4>
+        <div class="train-back">
+          <b>K201</b> 13:52 → 21:49 当晚到（Day4需压缩为仅上午）<br>
+          <b>K803/K806</b> 16:18 → 次日01:37<br>
+          <b>K488/K485</b> 18:30 → 次日02:03<br>
+          <b>K653</b> 19:16 → 次日03:11<br>
+          <b>K788</b> 20:07 → 次日03:38
+        </div>
+        <div class="train-note" style="margin-top:8px;">本计划按夜车返程（18:30-20:07段）编排，Day4行程完整。若选K201白天车，Day4只保留上午三峡博物馆。</div>
+      </div>
+    </div>
+    <div class="train-alert">⚠️ 重要提醒：K202是凌晨 02:38 从怀化发车（不是晚上）！请凌晨1:30前到达怀化站候车。返程若选夜车，次日清晨到怀化，请安排好到家交通。</div>
+  </div>
+</div>
+
 <!-- ===== ROUTE OVERVIEW ===== -->
 <div class="sec">
   <div class="sec-t">ROUTE</div>
   <div class="sec-h">四天动线总览</div>
-  <div class="sec-d">重庆主要景点分布：渝中半岛（解放碑、洪崖洞、索道、白象居）高度集中，步行可达；磁器口在西北沙坪坝区；南山在南岸区；观音桥在江北区；重庆西站在西侧。四天动线依次为：渝中环线 → 西北至南岸单向 → 武隆单点 → 观音桥至西站一线。</div>
+  <div class="sec-d">重庆主要景点分布：渝中半岛（解放碑、洪崖洞、索道、白象居）高度集中，步行可达；磁器口在西北沙坪坝区；南山在南岸区；观音桥在江北区；重庆北站位于江北南侧。四天动线：渝中环线 → 西北至南岸单向 → 武隆单点 → 观音桥至重庆北站一线。</div>
   <div class="routes-g">
     <div class="route-card">
       <div class="route-day rd1">DAY 1 · 渝中环线</div>
-      <div class="route-name">重庆西站 → 解放碑一圈</div>
-      <div class="route-path">重庆西站<b class="arr">→</b>解放碑<b class="arr">→</b>白象居<b class="arr">→</b>索道过江<b class="arr">→</b>返回<b class="arr">→</b>戴家巷<b class="arr">→</b>洪崖洞<b class="arr">→</b>千厮门大桥</div>
+      <div class="route-name">重庆北站 → 解放碑一圈</div>
+      <div class="route-path">重庆北站<b class="arr">→</b>解放碑<b class="arr">→</b>白象居<b class="arr">→</b>索道过江<b class="arr">→</b>返回<b class="arr">→</b>戴家巷<b class="arr">→</b>洪崖洞<b class="arr">→</b>千厮门大桥</div>
       <div class="route-ok">✓ 景点间步行均≤15分钟</div>
     </div>
     <div class="route-card">
@@ -178,9 +227,9 @@
     </div>
     <div class="route-card">
       <div class="route-day rd4">DAY 4 · 一线向北</div>
-      <div class="route-name">顺路抵达西站</div>
-      <div class="route-path">三峡博物馆<b class="arr">→</b>观音桥(午餐+特产)<b class="arr">→</b>9号线转5号线<b class="arr">→</b>重庆西站</div>
-      <div class="route-ok">✓ 地铁一次换乘直达西站</div>
+      <div class="route-name">3号线直达车站</div>
+      <div class="route-path">三峡博物馆<b class="arr">→</b>观音桥(午餐+特产)<b class="arr">→</b>3号线直达<b class="arr">→</b>重庆北站</div>
+      <div class="route-ok">✓ 地铁3号线一线直达不换乘</div>
     </div>
   </div>
 </div>
@@ -191,28 +240,28 @@
 <div class="day">
   <div class="dot c1">D1</div>
   <div class="day-hd">
-    <div class="day-lb">DAY ONE · 到达日 · 09:00 重庆西站下车</div>
+    <div class="day-lb">DAY ONE · 到达日 · 10:16 重庆北站下车</div>
     <div class="day-tt">渝中环线</div>
     <div class="day-st">解放碑 → 白象居 → 索道 → 洪崖洞 · 步行一圈</div>
-    <div class="day-logic"><b>🧭 今日动线：</b>解放碑、白象居、索道北站、洪崖洞集中在渝中半岛约2平方公里内。上午<b>解放碑商圈</b>吃饭打卡 → 向东南步行至<b>白象居、索道北站</b>（相邻约500米）→ 索道过江后地铁返回 → 傍晚向西北<b>戴家巷、洪崖洞、千厮门大桥</b>（三者相连），顺时针一圈。</div>
+    <div class="day-logic"><b>🧭 今日动线：</b>解放碑、白象居、索道北站、洪崖洞集中在渝中半岛约2平方公里内。中午<b>解放碑商圈</b>吃饭打卡 → 向东南步行至<b>白象居、索道北站</b>（相邻约500米）→ 索道过江后地铁返回 → 傍晚向西北<b>戴家巷、洪崖洞、千厮门大桥</b>（三者相连），顺时针一圈。</div>
   </div>
   <div class="stops">
 
-    <div class="card" onclick="openModal('xibei')" style="animation-delay:.05s">
+    <div class="card" onclick="openModal('chongqingbei')" style="animation-delay:.05s">
       <div class="card-img-wrap"><div class="ph ph-b">🚉</div><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">09:00-10:00 · 出站交通</div>
-        <div class="c-name">重庆西站 → 解放碑</div>
-        <div class="c-desc">5号线(石桥铺方向)4站→石桥铺换1号线(朝天门方向)7站→较场口站，出站步行5分钟到解放碑。到店先寄存行李</div>
-        <div class="c-meta"><span class="price p-paid">¥4/人</span><span class="tag">约50分钟</span><span class="tag">打车△约35元/30分钟</span></div>
+        <div class="c-time">10:16-11:05 · 出站交通</div>
+        <div class="c-name">重庆北站 → 解放碑</div>
+        <div class="c-desc">南广场乘10号线(兰花路方向)4站→曾家岩换2号线(较场口方向)3站→临江门站，步行200米即解放碑。到店先寄存行李</div>
+        <div class="c-meta"><span class="price p-paid">¥4/人</span><span class="tag">约35分钟</span><span class="tag">打车△约25元/20分钟</span></div>
       </div>
     </div>
-    <div class="conn"><span class="mode">🍜</span><b>步行3分钟</b>民生路花市豌杂面 · 早午餐</div>
+    <div class="conn"><span class="mode">🍜</span><b>步行3分钟</b>民生路花市豌杂面 · 午餐</div>
 
     <div class="card" onclick="openModal('mian')" style="animation-delay:.1s">
       <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Chongqing_Xiaomian_with_fried_eggs.jpg/1280px-Chongqing_Xiaomian_with_fried_eggs.jpg" alt="重庆小面"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">10:30 · 早午餐</div>
+        <div class="c-time">11:30 · 午餐</div>
         <div class="c-name">花市豌杂面</div>
         <div class="c-desc">20年老字号，豌豆软糯流沙，杂酱香浓。二两豌杂+煎蛋是标准搭配</div>
         <div class="c-meta"><span class="price p-paid">¥15/人</span><span class="tag">城市惠 4.5分</span></div>
@@ -223,18 +272,18 @@
     <div class="card" onclick="openModal('jfb')" style="animation-delay:.15s">
       <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Jiefangbei_CBD_20240721.jpg/1280px-Jiefangbei_CBD_20240721.jpg" alt="解放碑"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">11:30 · 打卡地标</div>
+        <div class="c-time">12:15 · 打卡地标</div>
         <div class="c-name">解放碑 + 八一好吃街</div>
         <div class="c-desc">城市地标打卡，顺路逛好吃街：酸辣粉、烤苕皮、山城小汤圆</div>
         <div class="c-meta"><span class="price p-free">免费</span><span class="tag">小吃 ¥20/人</span></div>
       </div>
     </div>
-    <div class="conn"><span class="mode">🍲</span><b>步行8分钟</b>较场口 · 午餐</div>
+    <div class="conn"><span class="mode">🍲</span><b>步行8分钟</b>较场口 · 正餐</div>
 
     <div class="card" onclick="openModal('hotpot')" style="animation-delay:.2s">
       <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Homemade_Hotpot.jpg" alt="重庆火锅"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">13:00 · 午餐</div>
+        <div class="c-time">13:30 · 正餐</div>
         <div class="c-name">珮姐老火锅（较场口店）</div>
         <div class="c-desc">必吃榜常客，牛油锅底辣中带微甜。较场口店临近解放碑，等位通常短于洪崖洞店</div>
         <div class="c-meta"><span class="price p-paid">¥75/人</span><span class="tag">大众点评 4.7分</span></div>
@@ -245,7 +294,7 @@
     <div class="card" onclick="openModal('baixiangju')" style="animation-delay:.25s">
       <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Chongqing_China_150731.jpg/1280px-Chongqing_China_150731.jpg" alt="白象居"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">15:00 · 拍照</div>
+        <div class="c-time">15:30 · 拍照</div>
         <div class="c-name">白象居</div>
         <div class="c-desc">《隐秘的角落》取景地，连廊窗框同框索道+来福士+东水门大桥。与索道北站相邻约450米</div>
         <div class="c-meta"><span class="price p-free">免费</span><span class="tag">王牌机位</span></div>
@@ -256,18 +305,18 @@
     <div class="card" onclick="openModal('suodao')" style="animation-delay:.3s">
       <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/%E9%87%8D%E5%BA%86%E9%95%BF%E6%B1%9F%E7%B4%A2%E9%81%93_-_Chongqing_Yangtze_River_Cableway_-_2015.04_-_panoramio.jpg/1280px-%E9%87%8D%E5%BA%86%E9%95%BF%E6%B1%9F%E7%B4%A2%E9%81%93_-_Chongqing_Yangtze_River_Cableway_-_2015.04_-_panoramio.jpg" alt="长江索道"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">15:45 · 过江体验</div>
+        <div class="c-time">16:15 · 过江体验</div>
         <div class="c-name">长江索道（北站上车）</div>
-        <div class="c-desc">单程4分30秒横跨长江。到南站后可顺逛龙门浩老街，再乘地铁6号线返回渝中</div>
+        <div class="c-desc">单程4分30秒横跨长江，下午光线柔和适合拍江景。到南站后可顺逛龙门浩老街，再乘地铁6号线返回渝中</div>
         <div class="c-meta"><span class="price p-paid">¥30/人（单程）</span><span class="tag">公众号购票</span></div>
       </div>
     </div>
-    <div class="conn"><span class="mode">🚇</span><b>地铁6号线上新街→小什字 · 2站约10分钟</b>回酒店休整</div>
+    <div class="conn"><span class="mode">🚇</span><b>地铁6号线上新街→小什字 · 2站约10分钟</b>回酒店休整，晚餐吃小吃垫垫即可（火锅吃得很饱）</div>
 
     <div class="card" onclick="openModal('hongyadong')" style="animation-delay:.35s">
       <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Hongyadong_night_lights_Chongqing.jpg/1280px-Hongyadong_night_lights_Chongqing.jpg" alt="洪崖洞夜景"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">18:30 · 夜景</div>
+        <div class="c-time">18:45 · 夜景</div>
         <div class="c-name">戴家巷 → 洪崖洞</div>
         <div class="c-desc">先逛洪崖洞旁的戴家巷崖壁步道（人少出片），再从11楼进、1楼出全程下坡。19:00亮灯</div>
         <div class="c-meta"><span class="price p-free">免费（需预约）</span><span class="tag">亮灯19:00-23:00</span></div>
@@ -278,7 +327,7 @@
     <div class="card" onclick="openModal('qiansimen')" style="animation-delay:.4s">
       <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Qiansimen_Bridge_at_night_20251027.jpg" alt="千厮门大桥"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">19:30 · 夜景收官</div>
+        <div class="c-time">20:00 · 夜景收官</div>
         <div class="c-name">千厮门大桥</div>
         <div class="c-desc">拍洪崖洞全景的最佳位置，桥中段回头即是《千与千寻》同款画面</div>
         <div class="c-meta"><span class="price p-free">免费</span><span class="tag">最佳机位</span></div>
@@ -361,10 +410,10 @@
     <div class="card" onclick="openModal('train')" style="animation-delay:.1s">
       <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Chongqing_North_Railway_Station_CRH380A_EMU.jpg" alt="重庆北站动车"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">07:00-09:30 · 交通</div>
-        <div class="c-name">重庆 ↔ 武隆 火车</div>
-        <div class="c-desc">重庆北站出发约2小时到武隆站，再转公交/拼车约40分钟到仙女山游客中心。务必买早班车</div>
-        <div class="c-meta"><span class="price p-paid">¥25/人/单程</span><span class="tag">携程实时票价</span></div>
+        <div class="c-time">07:00 出发 · 交通</div>
+        <div class="c-name">酒店 → 重庆北站 → 武隆</div>
+        <div class="c-desc">临江门/较场口乘2号线→曾家岩换10号线直达重庆北站（约25分钟）。乘早班火车约2小时到武隆站，再转公交/拼车约40分钟到仙女山游客中心</div>
+        <div class="c-meta"><span class="price p-paid">地铁¥4 + 火车¥25</span><span class="tag">务必买早班车</span></div>
       </div>
     </div>
     <div class="conn"><span class="mode">🚌</span><b>景区接驳车 · 约40分钟</b>游客中心统一换乘</div>
@@ -380,17 +429,17 @@
     </div>
 
   </div>
-  <div class="day-total bar-b"><span>Day 3 费用小计（含火车往返+门票+餐）</span><span>≈ ¥315/人</span></div>
+  <div class="day-total bar-b"><span>Day 3 费用小计（含火车往返+门票+餐）</span><span>≈ ¥320/人</span></div>
 </div>
 
 <!-- ===== DAY 4 ===== -->
 <div class="day">
   <div class="dot c4">D4</div>
   <div class="day-hd">
-    <div class="day-lb">DAY FOUR · 返程日</div>
-    <div class="day-tt">博物馆 → 观音桥 → 重庆西站</div>
+    <div class="day-lb">DAY FOUR · 返程日 · 夜车回怀化</div>
+    <div class="day-tt">博物馆 → 观音桥 → 重庆北站</div>
     <div class="day-st">文化打卡 → 午餐 → 特产 → 候车返程</div>
-    <div class="day-logic"><b>🧭 今日动线：</b>三峡博物馆与人民大礼堂相邻，观音桥商圈集午餐与购物于一体，之后地铁9号线转5号线直达重庆西站。</div>
+    <div class="day-logic"><b>🧭 今日动线：</b>三峡博物馆与人民大礼堂相邻，观音桥商圈集午餐与购物于一体，之后地铁3号线直达重庆北站南广场（6站约15分钟，不换乘）。按夜车返程编排（如K653 19:16 / K788 20:07），行程完整宽松；若选K201（13:52发），本日只保留上午三峡博物馆。</div>
   </div>
   <div class="stops">
 
@@ -425,7 +474,7 @@
         <div class="c-meta"><span class="price p-paid">¥50/人</span><span class="tag">超市更实惠</span></div>
       </div>
     </div>
-    <div class="conn"><span class="mode">🚇</span><b>地铁9号线→红岩村换5号线 · 约45分钟 · ¥4-5</b>抵达重庆西站，晚上火车回怀化</div>
+    <div class="conn"><span class="mode">🚇</span><b>地铁3号线直达重庆北站南广场 · 6站约15分钟 · ¥2-3</b>候车，乘夜车回怀化（次日清晨到）</div>
 
   </div>
   <div class="day-total bar-g"><span>Day 4 费用小计</span><span>≈ ¥167/人</span></div>
@@ -438,27 +487,28 @@
   <div class="sec-t">BUDGET</div>
   <div class="sec-h">费用总览 · 两人合计</div>
   <div class="budget-g">
-    <div class="b-card"><div class="b-icon">🚄</div><div class="b-label">往返火车</div><div class="b-amt" style="color:#ff6b35">¥740</div><div class="b-note">硬卧 · 两人往返</div></div>
-    <div class="b-card"><div class="b-icon">🏨</div><div class="b-label">住宿 3晚</div><div class="b-amt" style="color:#a855f7">¥1,000</div><div class="b-note">舒适型 · 两人均摊</div></div>
-    <div class="b-card"><div class="b-icon">🍜</div><div class="b-label">吃喝玩乐</div><div class="b-amt" style="color:#00d4ff">¥1,912</div><div class="b-note">含Day2打车过江</div></div>
+    <div class="b-card"><div class="b-icon">🚄</div><div class="b-label">往返火车</div><div class="b-amt" style="color:#ff6b35">¥740</div><div class="b-note">K202去 + 夜车返 · 两人</div></div>
+    <div class="b-card"><div class="b-icon">🏨</div><div class="b-label">住宿 3晚</div><div class="b-amt" style="color:#a855f7">¥1,000</div><div class="b-note">解放碑周边 · 两人均摊</div></div>
+    <div class="b-card"><div class="b-icon">🍜</div><div class="b-label">吃喝玩乐</div><div class="b-amt" style="color:#00d4ff">¥1,917</div><div class="b-note">含Day2打车过江</div></div>
     <div class="b-card"><div class="b-icon">🚇</div><div class="b-label">市内交通</div><div class="b-amt" style="color:#34d399">¥100</div><div class="b-note">地铁为主</div></div>
   </div>
   <table>
     <thead><tr><th>项目</th><th>单价/人</th><th>人数</th><th>小计</th></tr></thead>
     <tbody>
-      <tr><td>🚄 怀化↔重庆西站 硬卧往返</td><td>△约¥185×2</td><td>2人</td><td class="amt">△约¥740</td></tr>
+      <tr><td>🚄 K202 怀化→重庆北（硬卧）</td><td>△约¥185</td><td>2人</td><td class="amt">△约¥370</td></tr>
+      <tr><td>🚄 返程夜车 重庆北→怀化（硬卧）</td><td>△约¥185</td><td>2人</td><td class="amt">△约¥370</td></tr>
       <tr><td>🏨 住宿（舒适型×3晚）</td><td>△约¥167/晚</td><td>2人</td><td class="amt">△约¥1,000</td></tr>
       <tr><td>🚇 市内地铁+打车</td><td>约¥50</td><td>2人</td><td class="amt">约¥100</td></tr>
       <tr><td>🍜 Day1 渝中环线</td><td>约¥165</td><td>2人</td><td class="amt">约¥330</td></tr>
       <tr><td>🏮 Day2 市区（含打车过江）</td><td>约¥305</td><td>2人</td><td class="amt">约¥610</td></tr>
-      <tr><td>🌉 Day3 武隆</td><td>约¥315</td><td>2人</td><td class="amt">约¥630</td></tr>
+      <tr><td>🌉 Day3 武隆</td><td>约¥320</td><td>2人</td><td class="amt">约¥640</td></tr>
       <tr><td>🦐 Day4 返程日</td><td>约¥167</td><td>2人</td><td class="amt">约¥334</td></tr>
-      <tr class="total-r"><td>💰 小计</td><td></td><td></td><td class="amt" style="font-size:24px">约¥3,744</td></tr>
-      <tr><td style="color:rgba(255,255,255,.35)">预留机动</td><td></td><td></td><td style="color:rgba(255,255,255,.35)">△约¥256</td></tr>
+      <tr class="total-r"><td>💰 小计</td><td></td><td></td><td class="amt" style="font-size:24px">约¥3,754</td></tr>
+      <tr><td style="color:rgba(255,255,255,.35)">预留机动</td><td></td><td></td><td style="color:rgba(255,255,255,.35)">△约¥246</td></tr>
       <tr class="total-r grand-total"><td>🎯 含机动总计</td><td></td><td></td><td class="amt" style="font-size:26px">约¥4,000</td></tr>
     </tbody>
   </table>
-  <p style="text-align:center;margin-top:18px;font-size:12px;color:rgba(255,255,255,.25);">人均约¥2,000 · △为预估值 · 旺季住宿可能上浮20-30% · 以实际为准</p>
+  <p style="text-align:center;margin-top:18px;font-size:12px;color:rgba(255,255,255,.25);">人均约¥2,000 · △为预估值 · 火车票价以12306为准 · 旺季住宿可能上浮20-30%</p>
 </div>
 
 <!-- ===== TIPS ===== -->
@@ -466,18 +516,20 @@
   <div class="sec-t">TIPS</div>
   <div class="sec-h">行前必读</div>
   <div class="tips-g">
+    <div class="tip"><div class="tip-i">🌙</div><div class="tip-t">凌晨发车</div><div class="tip-p">K202凌晨02:38怀化发车！请01:30前到怀化站候车，硬卧正好补觉</div></div>
     <div class="tip"><div class="tip-i">🌶️</div><div class="tip-t">辣度提醒</div><div class="tip-p">重庆"微辣"≈外地中辣。第一次点微辣，配唯怡豆奶或冰粉解辣</div></div>
     <div class="tip"><div class="tip-i">👟</div><div class="tip-t">穿鞋</div><div class="tip-p">防滑运动鞋是唯一选择！爬坡上坎是常态，高跟鞋=自讨苦吃</div></div>
     <div class="tip"><div class="tip-i">📱</div><div class="tip-t">预约</div><div class="tip-p">洪崖洞/索道/三峡博物馆/武隆均需提前预约，出发前3-5天购票</div></div>
     <div class="tip"><div class="tip-i">🗺️</div><div class="tip-t">导航</div><div class="tip-p">8D地形导航常"失灵"，多问本地人！同一栋楼不同楼层都有入口</div></div>
     <div class="tip"><div class="tip-i">☀️</div><div class="tip-t">天气</div><div class="tip-p">8月底最高33-38°C，白天避免暴晒。武隆山区凉爽20°C出头</div></div>
     <div class="tip"><div class="tip-i">💰</div><div class="tip-t">省钱</div><div class="tip-p">火锅选居民区老店更实惠。特产去超市买。地铁2-7元搞定出行</div></div>
+    <div class="tip"><div class="tip-i">🚉</div><div class="tip-t">车站</div><div class="tip-p">到发均在重庆北站（南广场乘地铁10/3号线）。Day3去武隆也从北站出发</div></div>
   </div>
 </div>
 
 <div class="ft">
-  <p>重庆旅行计划 · 怀化出发 · 早9点抵重庆西站 · 4天3晚 · 两人同行</p>
-  <p style="margin-top:6px;">所有价格基于2026年8月多源验证数据 · 出发前请确认实时价格</p>
+  <p>重庆旅行计划 · 怀化出发 · K202次早10:16抵重庆北站 · 4天3晚 · 两人同行</p>
+  <p style="margin-top:6px;">车次/价格基于2026年8月查证数据 · 出发前请以12306实时信息为准</p>
   <p style="margin-top:6px;">图片来源：Wikimedia Commons（CC协议）</p>
 </div>
 
@@ -507,17 +559,17 @@
 
 <script>
 const SPOTS = {
-  xibei: {
-    tag:"DAY 1 · 出站交通", name:"重庆西站 → 解放碑",
+  chongqingbei: {
+    tag:"DAY 1 · 出站交通", name:"重庆北站 → 解放碑",
     images:[],
-    intro:"重庆西站接入轨道交通5号线与环线（2021年开通）。到解放碑方案：5号线（石桥铺方向）坐4站至石桥铺，换1号线（朝天门方向）坐7站至较场口站，出站步行约5分钟即到解放碑步行街，全程约50分钟。两人同行也可打车，约30分钟。",
-    highlights:["5号线→石桥铺换1号线→较场口，票价¥4","打车约30分钟，△约35元","到店先寄存行李，再轻装开逛","西站出站按\"轨道交通\"指示牌走，别跟拉客的走"],
-    tips:["早高峰已过，9点出发地铁不挤","环线也可到（谢家湾换2号线临江门），5号线方案换乘更顺","重庆地铁支持支付宝/微信乘车码"],
-    transit:["重庆西站站：5号线/环线","较场口站：1号线/2号线交汇，解放碑核心","住宿建议选较场口/临江门/小什字地铁站300米内"],
-    price:[["¥4/人 地铁","p-paid"],["△打车约35元","tag"],["约50分钟","tag"]]
+    intro:"重庆北站分南广场和北广场，地铁南广场站（10号线/3号线/环线）与北广场站（10号线/4号线）均有设站。K202停靠后从南广场出站乘地铁最方便：10号线（兰花路方向）4站至曾家岩，换2号线（较场口方向）3站至临江门站，出站步行约200米即解放碑步行街，全程约35分钟。",
+    highlights:["10号线→曾家岩换2号线→临江门，约35分钟","到小什字（近洪崖洞/白象居）：10号线→红土地换6号线，约30分钟","打车约20分钟，△约25元","出站跟\"轨道交通\"指示牌走，拒绝拉客"],
+    tips:["南广场出站，别走到北广场（两广场相距较远，地铁10号线内部可换乘）","地铁支持支付宝/微信乘车码","到店先寄存行李再开逛","2025年7月重庆地铁票价机制有调整，实际以闸机为准"],
+    transit:["重庆北站南广场站：10号线/3号线/环线","临江门站：2号线，解放碑北侧","住宿建议选临江门/较场口/小什字地铁站300米内"],
+    price:[["¥4/人 地铁","p-paid"],["△打车约25元","tag"],["约35分钟","tag"]]
   },
   mian: {
-    tag:"DAY 1 · 早午餐", name:"花市豌杂面（花市总店）",
+    tag:"DAY 1 · 午餐", name:"花市豌杂面（花市总店）",
     images:[["https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Chongqing_Xiaomian_with_fried_eggs.jpg/1280px-Chongqing_Xiaomian_with_fried_eggs.jpg","重庆小面配煎蛋"],["https://upload.wikimedia.org/wikipedia/commons/1/19/%E9%87%8D%E5%BA%86%E8%B1%8C%E6%9D%82%E9%9D%A2.jpg","豌杂面特写：豌豆+杂酱"]],
     intro:"开了20多年的老字号，因开在鲁祖庙花市而得名，是重庆豌杂面的代表之一。豌豆粒粒软糯流沙、入口即化，杂酱肥瘦恰到、入味不腻，拌匀后每根面条都裹着酱。分量比同类馆子大，食量大的人点二两即可。",
     highlights:["招牌豌杂面：豌豆+杂酱，红油拌匀","必加煎蛋，本地人标准吃法","干溜（少汤）更入味","牛肉面也不错：块头大、软烂鲜香"],
@@ -535,7 +587,7 @@ const SPOTS = {
     price:[["免费","p-free"],["小吃 ¥20/人","tag"]]
   },
   hotpot: {
-    tag:"DAY 1 · 午餐", name:"珮姐老火锅（较场口店）",
+    tag:"DAY 1 · 正餐", name:"珮姐老火锅（较场口店）",
     images:[["https://upload.wikimedia.org/wikipedia/commons/4/41/Homemade_Hotpot.jpg","牛油红汤火锅"],["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/3x3_hot_pot_in_Chongqing_%2820180217161707%29.jpg/960px-3x3_hot_pot_in_Chongqing_%2820180217161707%29.jpg","九宫格锅底+菜品摆盘"],["https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Chongqing_hotpot_2.jpg/1280px-Chongqing_hotpot_2.jpg","沸腾锅底：鸭血、鳝段"]],
     intro:"重庆火锅排队王，24小时营业的大众点评必吃榜常客。锅底以辣著称，牛油+醪糟+冰糖，辣中带微甜更符合外地人口味；汤底用老鹰茶代替高汤，解腻降火。较场口店临近解放碑，等位通常短于洪崖洞店。",
     highlights:["必点：贡菜丸子、麻辣牛肉、8秒土豆片、屠场鲜毛肚","毛肚\"七上八下\"涮8-10秒","蘸料只加香油+蒜泥+葱花，不加麻酱","收尾一碗红糖冰汤圆解辣"],
@@ -616,13 +668,13 @@ const SPOTS = {
     price:[["¥30/人","p-paid"],["携程 4.3分","tag"],["黄金时段 17:30-20:00","tag"]]
   },
   train: {
-    tag:"DAY 3 · 交通", name:"重庆 ↔ 武隆 火车",
+    tag:"DAY 3 · 交通", name:"酒店 → 重庆北站 → 武隆",
     images:[["https://upload.wikimedia.org/wikipedia/commons/5/59/Chongqing_North_Railway_Station_CRH380A_EMU.jpg","重庆北站的CRH动车组"]],
-    intro:"重庆北站→武隆站约2小时，是去武隆最省钱稳定的方式。出武隆站后转乘公交或拼车约40分钟到仙女山游客中心（金字塔形建筑）。务必买早班车（7点左右），才能保证10:30前进景区、16:00前返程。",
-    highlights:["重庆北站出发，地铁3号线/10号线直达","武隆站→游客中心：公交约¥5-10或拼车¥15","提前在12306买好往返票","回程选17:00左右车次，19点前回市区"],
+    intro:"Day3一早从解放碑酒店出发：临江门/较场口乘2号线→曾家岩换10号线直达重庆北站南广场（约25分钟）。重庆北站→武隆站约2小时，出武隆站后转乘公交或拼车约40分钟到仙女山游客中心（金字塔形建筑）。务必买早班车（7点左右），才能保证10:30前进景区、16:00前返程。",
+    highlights:["酒店→重庆北站：2号线→曾家岩换10号线，约25分钟","武隆站→游客中心：公交约¥5-10或拼车¥15","提前在12306买好往返票","回程选17:00左右车次，19点前回市区"],
     tips:["武隆站到景区还有40分钟车程，别掐点","旺季提前3天购票","自驾不推荐：山路弯道多+停车难","晕车者备晕车药"],
-    transit:["去程：地铁3号线到重庆北站南广场","武隆站→游客中心：公交/拼车40分钟","景区内：门票含观光车接驳"],
-    price:[["¥25/人/单程","p-paid"],["往返¥50","tag"],["△携程实时价","tag"]]
+    transit:["酒店→重庆北站南广场：地铁约25分钟¥4","武隆站→游客中心：公交/拼车40分钟","景区内：门票含观光车接驳"],
+    price:[["地铁¥4+火车¥25/单程","p-paid"],["武隆往返火车约¥50","tag"],["△携程实时价","tag"]]
   },
   wulong: {
     tag:"DAY 3 · 世界遗产", name:"武隆天生三桥",
@@ -654,11 +706,11 @@ const SPOTS = {
   techan: {
     tag:"DAY 4 · 伴手礼", name:"观音桥商圈采购特产",
     images:[["https://upload.wikimedia.org/wikipedia/commons/5/59/%E8%A7%82%E9%9F%B3%E6%A1%A55.jpg","观音桥步行街商圈实景"]],
-    intro:"返程前最后一站：在观音桥的永辉/重百超市采购特产，价格比磁器口、洪崖洞景区便宜约一半，且不用人挤人。采购后乘地铁9号线转5号线直达重庆西站。",
+    intro:"返程前最后一站：在观音桥的永辉/重百超市采购特产，价格比磁器口、洪崖洞景区便宜约一半，且不用人挤人。采购后乘地铁3号线直达重庆北站南广场，6站约15分钟，不换乘。",
     highlights:["桥头火锅底料：重庆老字号，块状牛油最正宗","陈昌银麻花：超市有专柜，不用从磁器口背","合川桃片、江津米花糖：传统糕点","涪陵榨菜：便宜实用的手信"],
     tips:["景区同款价格翻倍，坚持超市购买","火锅底料选块状牛油型，桥头/德庄都稳","行李留点空间，底料有真空包装不易碎","网上下单也可包邮到家"],
-    transit:["观音桥商圈内：永辉超市/重百超市多家","采购后：地铁9号线→红岩村换5号线→重庆西站，约45分钟","预留至少40分钟到站安检"],
-    price:[["预算 ¥50/人","p-paid"],["比景区省约50%","tag"],["超市营业至22:00","tag"]]
+    transit:["观音桥商圈内：永辉超市/重百超市多家","采购后：地铁3号线观音桥站→重庆北站南广场，6站约15分钟","预留至少40分钟到站安检"],
+    price:[["预算 ¥50/人","p-paid"],["比景区省约50%","tag"],["地铁¥2-3","tag"]]
   }
 };
 
