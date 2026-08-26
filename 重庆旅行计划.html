@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>重庆旅行计划 · 怀化出发</title>
+<title>重庆旅行计划 · 怀化出发 · 顺路优化版</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -11,11 +11,11 @@
 
   /* ===== HERO ===== */
   .hero { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
-  .hero-bg { position:absolute; inset:0; background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Chongqing_Skyline_At_Night.png/1280px-Chongqing_Skyline_At_Night.png') center/cover no-repeat; filter:saturate(1.1); }
-  .hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(8,8,13,.55) 0%,rgba(8,8,13,.35) 40%,rgba(8,8,13,.92) 100%); }
+  .hero-bg { position:absolute; inset:0; background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Chongqing_Skyline_At_Night.png/1280px-Chongqing_Skyline_At_Night.png') center/cover no-repeat; }
+  .hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(8,8,13,.55),rgba(8,8,13,.35) 40%,rgba(8,8,13,.95)); }
   .hero-c { position:relative; z-index:2; padding:0 20px; }
   .badge { display:inline-block; padding:6px 20px; border:1px solid rgba(255,255,255,.25); border-radius:30px; font-size:12px; letter-spacing:3px; color:rgba(255,255,255,.7); margin-bottom:28px; backdrop-filter:blur(10px); background:rgba(0,0,0,.3); }
-  .hero h1 { font-size:clamp(52px,9vw,130px); font-weight:900; line-height:1.05; background:linear-gradient(135deg,#fff 0%,#ffb35c 35%,#ff6b35 55%,#a855f7 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:14px; letter-spacing:-3px; text-shadow:0 20px 60px rgba(0,0,0,.5); }
+  .hero h1 { font-size:clamp(52px,9vw,130px); font-weight:900; line-height:1.05; background:linear-gradient(135deg,#fff,#ffb35c 35%,#ff6b35 55%,#a855f7); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:14px; letter-spacing:-3px; }
   .hero-sub { font-size:clamp(15px,2.5vw,22px); color:rgba(255,255,255,.65); font-weight:300; margin-bottom:46px; }
   .stats { display:flex; gap:56px; justify-content:center; flex-wrap:wrap; }
   .stat-n { font-size:42px; font-weight:900; color:#fff; }
@@ -24,60 +24,101 @@
   /* ===== SECTIONS ===== */
   .sec { max-width:1100px; margin:0 auto; padding:80px 24px; }
   .sec-t { font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#ff6b35; margin-bottom:10px; }
-  .sec-h { font-size:clamp(26px,4vw,44px); font-weight:700; margin-bottom:50px; line-height:1.2; }
+  .sec-h { font-size:clamp(26px,4vw,44px); font-weight:700; margin-bottom:16px; }
+  .sec-d { font-size:14px; color:rgba(255,255,255,.45); margin-bottom:44px; line-height:1.8; }
+
+  /* ===== ROUTE OVERVIEW ===== */
+  .routes-g { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-bottom:20px; }
+  .route-card { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07); border-radius:14px; padding:22px; }
+  .route-day { font-size:12px; letter-spacing:2px; margin-bottom:8px; font-weight:700; }
+  .rd1{color:#ff6b35} .rd2{color:#a855f7} .rd3{color:#00d4ff} .rd4{color:#34d399}
+  .route-name { font-size:16px; font-weight:700; margin-bottom:10px; }
+  .route-path { font-size:12px; color:rgba(255,255,255,.5); line-height:1.9; }
+  .route-path b { color:rgba(255,255,255,.85); font-weight:500; }
+  .route-path .arr { color:#ff6b35; margin:0 2px; }
+  .route-ok { display:inline-flex; align-items:center; gap:5px; margin-top:12px; font-size:11px; padding:4px 10px; border-radius:20px; background:rgba(52,211,153,.1); color:#34d399; border:1px solid rgba(52,211,153,.2); }
 
   /* ===== TIMELINE ===== */
   .tl { position:relative; padding-left:56px; }
-  .tl::before { content:''; position:absolute; left:22px; top:0; bottom:0; width:2px; background:linear-gradient(180deg,#ff6b35,#a855f7 50%,#00d4ff); border-radius:1px; }
+  .tl::before { content:''; position:absolute; left:22px; top:0; bottom:0; width:2px; background:linear-gradient(180deg,#ff6b35,#a855f7 50%,#00d4ff); }
   .day { position:relative; margin-bottom:70px; }
   .dot { position:absolute; left:-44px; top:0; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:14px; color:#fff; z-index:2; box-shadow:0 4px 20px rgba(0,0,0,.4); }
-  .dot.c1 { background:linear-gradient(135deg,#ff6b35,#ff9a56); }
-  .dot.c2 { background:linear-gradient(135deg,#a855f7,#c084fc); }
-  .dot.c3 { background:linear-gradient(135deg,#00d4ff,#38bdf8); }
-  .dot.c4 { background:linear-gradient(135deg,#34d399,#6ee7b7); }
-  .day-hd { margin-bottom:28px; }
+  .dot.c1{background:linear-gradient(135deg,#ff6b35,#ff9a56)} .dot.c2{background:linear-gradient(135deg,#a855f7,#c084fc)}
+  .dot.c3{background:linear-gradient(135deg,#00d4ff,#38bdf8)} .dot.c4{background:linear-gradient(135deg,#34d399,#6ee7b7)}
+  .day-hd { margin-bottom:20px; }
   .day-lb { font-size:11px; letter-spacing:3px; color:rgba(255,255,255,.35); text-transform:uppercase; margin-bottom:4px; }
   .day-tt { font-size:clamp(20px,3vw,30px); font-weight:700; }
   .day-st { font-size:14px; color:rgba(255,255,255,.45); margin-top:4px; }
+  .day-logic { margin-top:14px; padding:14px 18px; border-radius:10px; background:rgba(255,255,255,.03); border:1px dashed rgba(255,255,255,.12); font-size:12.5px; color:rgba(255,255,255,.55); line-height:1.8; }
+  .day-logic b { color:#ffd08a; font-weight:700; }
 
   /* ===== STOP CARD ===== */
-  .stops { display:grid; gap:18px; }
-  .card { display:grid; grid-template-columns:340px 1fr; border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.02); transition:transform .3s,box-shadow .3s,border-color .3s; }
-  .card:hover { transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,.55); border-color:rgba(255,255,255,.14); }
+  .stops { display:grid; gap:0; }
+  .card { display:grid; grid-template-columns:340px 1fr; border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.02); transition:transform .3s,box-shadow .3s,border-color .3s; cursor:pointer; }
+  .card:hover { transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,.55); border-color:rgba(255,255,255,.16); }
   .card-img-wrap { position:relative; min-height:210px; overflow:hidden; }
   .card-img-wrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s; }
   .card:hover .card-img-wrap img { transform:scale(1.05); }
   .card-img-wrap .ph { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:72px; }
-  .card-img-wrap .ph-o { background:linear-gradient(135deg,#1a0f00,#2d1800 50%,#7a3410); }
-  .card-img-wrap .ph-p { background:linear-gradient(135deg,#0f001a,#1a0033 50%,#4c1d7a); }
+  .ph-o{background:linear-gradient(135deg,#1a0f00,#2d1800 50%,#7a3410)} .ph-p{background:linear-gradient(135deg,#0f001a,#1a0033 50%,#4c1d7a)}
+  .more-hint { position:absolute; right:10px; bottom:10px; z-index:3; font-size:10.5px; padding:4px 10px; border-radius:20px; background:rgba(0,0,0,.55); color:rgba(255,255,255,.8); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.15); }
   .card-body { padding:26px 30px; display:flex; flex-direction:column; justify-content:center; }
   .c-time { font-size:11px; letter-spacing:2px; color:rgba(255,255,255,.3); text-transform:uppercase; margin-bottom:5px; }
   .c-name { font-size:20px; font-weight:700; margin-bottom:8px; }
   .c-desc { font-size:13px; color:rgba(255,255,255,.5); line-height:1.75; margin-bottom:14px; }
   .c-meta { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
   .price { display:inline-flex; align-items:center; gap:4px; padding:5px 14px; border-radius:30px; font-size:13px; font-weight:700; }
-  .p-free { background:rgba(52,211,153,.1); color:#34d399; border:1px solid rgba(52,211,153,.25); }
-  .p-paid { background:rgba(255,107,53,.1); color:#ff8a50; border:1px solid rgba(255,107,53,.25); }
+  .p-free{background:rgba(52,211,153,.1);color:#34d399;border:1px solid rgba(52,211,153,.25)}
+  .p-paid{background:rgba(255,107,53,.1);color:#ff8a50;border:1px solid rgba(255,107,53,.25)}
   .tag { font-size:11px; padding:4px 10px; border-radius:20px; background:rgba(255,255,255,.05); color:rgba(255,255,255,.45); }
 
-  /* ===== DAY TOTAL BAR ===== */
+  /* ===== CONNECTOR ===== */
+  .conn { display:flex; align-items:center; justify-content:center; gap:10px; padding:14px 0; font-size:12px; color:rgba(255,255,255,.4); }
+  .conn::before,.conn::after { content:''; height:1px; width:60px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.2)); }
+  .conn::after { background:linear-gradient(90deg,rgba(255,255,255,.2),transparent); }
+  .conn .mode { font-size:14px; }
+  .conn b { color:rgba(255,255,255,.65); font-weight:500; }
+
+  /* ===== DAY TOTAL ===== */
   .day-total { margin-top:22px; padding:16px 24px; border-radius:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
-  .day-total span:first-child { font-size:13px; color:rgba(255,255,255,.45); }
-  .day-total span:last-child { font-size:22px; font-weight:900; }
-  .bar-o { background:rgba(255,107,53,.06); border:1px solid rgba(255,107,53,.15); } .bar-o span:last-child { color:#ff6b35; }
-  .bar-p { background:rgba(168,85,247,.06); border:1px solid rgba(168,85,247,.15); } .bar-p span:last-child { color:#a855f7; }
-  .bar-b { background:rgba(0,212,255,.06); border:1px solid rgba(0,212,255,.15); } .bar-b span:last-child { color:#00d4ff; }
-  .bar-g { background:rgba(52,211,153,.06); border:1px solid rgba(52,211,153,.15); } .bar-g span:last-child { color:#34d399; }
+  .day-total span:first-child{font-size:13px;color:rgba(255,255,255,.45)} .day-total span:last-child{font-size:22px;font-weight:900}
+  .bar-o{background:rgba(255,107,53,.06);border:1px solid rgba(255,107,53,.15)} .bar-o span:last-child{color:#ff6b35}
+  .bar-p{background:rgba(168,85,247,.06);border:1px solid rgba(168,85,247,.15)} .bar-p span:last-child{color:#a855f7}
+  .bar-b{background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15)} .bar-b span:last-child{color:#00d4ff}
+  .bar-g{background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.15)} .bar-g span:last-child{color:#34d399}
+
+  /* ===== MODAL ===== */
+  .modal-mask { position:fixed; inset:0; background:rgba(0,0,0,.8); backdrop-filter:blur(8px); z-index:100; display:none; align-items:flex-start; justify-content:center; overflow-y:auto; padding:40px 16px; }
+  .modal-mask.open { display:flex; }
+  .modal { background:#12121a; border:1px solid rgba(255,255,255,.1); border-radius:20px; max-width:860px; width:100%; overflow:hidden; animation:mIn .3s ease-out; }
+  @keyframes mIn { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  .m-gallery { position:relative; height:380px; background:#000; }
+  .m-gallery img { width:100%; height:100%; object-fit:cover; }
+  .m-gbtn { position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.5); color:#fff; font-size:18px; cursor:pointer; backdrop-filter:blur(6px); }
+  .m-gbtn:hover { background:rgba(0,0,0,.8); }
+  .m-prev{left:14px} .m-next{right:14px}
+  .m-count { position:absolute; right:16px; top:14px; font-size:11px; padding:4px 12px; border-radius:20px; background:rgba(0,0,0,.6); color:rgba(255,255,255,.8); }
+  .m-close { position:absolute; left:16px; top:14px; width:36px; height:36px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.6); color:#fff; font-size:16px; cursor:pointer; z-index:5; }
+  .m-thumbs { display:flex; gap:8px; padding:12px 16px 0; flex-wrap:wrap; }
+  .m-thumbs img { width:72px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer; opacity:.45; border:2px solid transparent; }
+  .m-thumbs img.on { opacity:1; border-color:#ff6b35; }
+  .m-body { padding:26px 32px 36px; }
+  .m-tag { font-size:11px; letter-spacing:2px; color:#ff6b35; text-transform:uppercase; margin-bottom:6px; }
+  .m-name { font-size:26px; font-weight:900; margin-bottom:14px; }
+  .m-intro { font-size:14px; color:rgba(255,255,255,.65); line-height:1.9; margin-bottom:22px; }
+  .m-sec { margin-bottom:20px; }
+  .m-sec-t { font-size:13px; font-weight:700; color:#ffd08a; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+  .m-sec ul { list-style:none; }
+  .m-sec li { font-size:13px; color:rgba(255,255,255,.55); line-height:1.9; padding-left:18px; position:relative; }
+  .m-sec li::before { content:'›'; position:absolute; left:0; color:#ff6b35; font-weight:700; }
+  .m-price-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
 
   /* ===== BUDGET ===== */
   .budget-g { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-bottom:40px; }
   .b-card { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:28px; text-align:center; transition:transform .3s; }
   .b-card:hover { transform:translateY(-3px); border-color:rgba(255,255,255,.12); }
-  .b-icon { font-size:32px; margin-bottom:12px; }
-  .b-label { font-size:11px; color:rgba(255,255,255,.35); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
-  .b-amt { font-size:32px; font-weight:900; }
-  .b-note { font-size:11px; color:rgba(255,255,255,.25); margin-top:6px; }
-
+  .b-icon{font-size:32px;margin-bottom:12px} .b-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+  .b-amt{font-size:32px;font-weight:900} .b-note{font-size:11px;color:rgba(255,255,255,.25);margin-top:6px}
   table { width:100%; border-collapse:collapse; }
   th,td { padding:14px 18px; text-align:left; border-bottom:1px solid rgba(255,255,255,.06); }
   th { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.3); font-weight:500; }
@@ -89,23 +130,17 @@
   /* ===== TIPS ===== */
   .tips-g { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
   .tip { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:24px; }
-  .tip-i { font-size:28px; margin-bottom:10px; }
-  .tip-t { font-size:15px; font-weight:700; margin-bottom:6px; }
-  .tip-p { font-size:12px; color:rgba(255,255,255,.45); line-height:1.7; }
-
+  .tip-i{font-size:28px;margin-bottom:10px} .tip-t{font-size:15px;font-weight:700;margin-bottom:6px} .tip-p{font-size:12px;color:rgba(255,255,255,.45);line-height:1.7}
   .ft { text-align:center; padding:50px 24px; color:rgba(255,255,255,.15); font-size:12px; border-top:1px solid rgba(255,255,255,.06); }
 
   @media(max-width:768px){
-    .card { grid-template-columns:1fr; }
-    .card-img-wrap { min-height:170px; }
-    .tl { padding-left:44px; }
-    .dot { left:-36px; width:36px; height:36px; font-size:12px; }
-    .stats { gap:28px; }
+    .card{grid-template-columns:1fr} .card-img-wrap{min-height:170px}
+    .tl{padding-left:44px} .dot{left:-36px;width:36px;height:36px;font-size:12px}
+    .stats{gap:28px} .m-gallery{height:260px} .m-body{padding:22px 20px 30px}
   }
-  ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:#08080d; }
-  ::-webkit-scrollbar-thumb { background:#333; border-radius:3px; }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  .card { animation:fadeUp .5s ease-out both; }
+  ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-track{background:#08080d} ::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .card{animation:fadeUp .5s ease-out both}
 </style>
 </head>
 <body>
@@ -114,17 +149,50 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-c">
-    <div class="badge">CHONGQING · 重庆 · 2026</div>
+    <div class="badge">CHONGQING · 重庆 · 2026 · 顺路优化版</div>
     <h1>山城之旅</h1>
-    <p class="hero-sub">从怀化出发 · 4天3晚 · 两人同行</p>
+    <p class="hero-sub">从怀化出发 · 4天3晚 · 两人同行 · 点击任意地点查看详情</p>
     <div class="stats">
       <div><div class="stat-n">4</div><div class="stat-l">天</div></div>
       <div><div class="stat-n">¥2k</div><div class="stat-l">人均预算</div></div>
-      <div><div class="stat-n">12</div><div class="stat-l">打卡点</div></div>
-      <div><div class="stat-n">8D</div><div class="stat-l">魔幻城市</div></div>
+      <div><div class="stat-n">15</div><div class="stat-l">打卡点</div></div>
+      <div><div class="stat-n">0</div><div class="stat-l">回头路</div></div>
     </div>
   </div>
 </section>
+
+<!-- ===== ROUTE OVERVIEW ===== -->
+<div class="sec">
+  <div class="sec-t">ROUTE LOGIC</div>
+  <div class="sec-h">路线逻辑总览 · 为什么这样走不顺路</div>
+  <div class="sec-d">重庆景点分布：渝中半岛（解放碑/洪崖洞/索道/白象居）集中步行可达；磁器口在西北沙坪坝；南山在江南岸；观音桥和火车北站在江北。四天按「核心环线 → 西北→南单向推进 → 单点深度 → 一路向北」设计，全程不走回头路。</div>
+  <div class="routes-g">
+    <div class="route-card">
+      <div class="route-day rd1">DAY 1 · 渝中核心环线</div>
+      <div class="route-name">一个圈走完，不折返</div>
+      <div class="route-path">解放碑<b class="arr">→</b>白象居<b class="arr">→</b>索道过江<b class="arr">→</b>返回渝中<b class="arr">→</b>戴家巷<b class="arr">→</b>洪崖洞<b class="arr">→</b>千厮门大桥</div>
+      <div class="route-ok">✓ 景点间全部步行 ≤15分钟</div>
+    </div>
+    <div class="route-card">
+      <div class="route-day rd2">DAY 2 · 西北 → 渝中 → 南岸</div>
+      <div class="route-name">单向推进不回头</div>
+      <div class="route-path">磁器口<b class="arr">→</b>鹅岭二厂<b class="arr">→</b>三层马路下坡<b class="arr">→</b>李子坝<b class="arr">→</b>打车过江<b class="arr">→</b>南山夜景</div>
+      <div class="route-ok">✓ 鹅岭→李子坝全程下坡步行</div>
+    </div>
+    <div class="route-card">
+      <div class="route-day rd3">DAY 3 · 武隆单点深度</div>
+      <div class="route-name">一天只做一件事</div>
+      <div class="route-path">重庆北站<b class="arr">→</b>武隆站<b class="arr">→</b>天生三桥<b class="arr">→</b>原路返回</div>
+      <div class="route-ok">✓ 早出晚归，景区内单向环线</div>
+    </div>
+    <div class="route-card">
+      <div class="route-day rd4">DAY 4 · 一路向北直达车站</div>
+      <div class="route-name">顺路捎上返程</div>
+      <div class="route-path">三峡博物馆<b class="arr">→</b>观音桥(午餐+特产)<b class="arr">→</b>重庆北站</div>
+      <div class="route-ok">✓ 地铁3号线一线直达火车站</div>
+    </div>
+  </div>
+</div>
 
 <!-- ===== DAY 1 ===== -->
 <div class="sec">
@@ -133,73 +201,90 @@
   <div class="dot c1">D1</div>
   <div class="day-hd">
     <div class="day-lb">DAY ONE · 到达日</div>
-    <div class="day-tt">渝中魔幻核心线</div>
-    <div class="day-st">解放碑 → 火锅 → 索道 → 洪崖洞夜景</div>
+    <div class="day-tt">渝中魔幻核心环线</div>
+    <div class="day-st">解放碑 → 白象居 → 索道 → 洪崖洞 · 全程步行圈</div>
+    <div class="day-logic"><b>🧭 路线逻辑：</b>所有景点集中在渝中半岛 2km² 内。上午在<b>解放碑商圈</b>吃饭打卡 → 向东南步行到<b>白象居、索道北站</b>（两景点相邻500米）→ 坐索道过江再地铁返回 → 傍晚向西北到<b>戴家巷、洪崖洞、千厮门大桥</b>（三者相连）。整体是一个顺时针环线，零回头路。</div>
   </div>
   <div class="stops">
 
-    <div class="card" style="animation-delay:.1s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Chongqing_Xiaomian_with_fried_eggs.jpg/1280px-Chongqing_Xiaomian_with_fried_eggs.jpg" alt="重庆小面"></div>
+    <div class="card" onclick="openModal('mian')" style="animation-delay:.1s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Chongqing_Xiaomian_with_fried_eggs.jpg/1280px-Chongqing_Xiaomian_with_fried_eggs.jpg" alt="重庆小面"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
         <div class="c-time">07:30 · 早餐</div>
         <div class="c-name">花市豌杂面</div>
-        <div class="c-desc">20年老字号，豌豆软糯流沙，杂酱香浓。二两+煎蛋是灵魂搭配。地址：渝中区民生路9号鲁祖庙花市入口旁</div>
+        <div class="c-desc">20年老字号，豌豆软糯流沙，杂酱香浓。就在解放碑旁，顺路第一站</div>
         <div class="c-meta"><span class="price p-paid">¥15/人</span><span class="tag">城市惠 4.5分</span></div>
       </div>
     </div>
+    <div class="conn"><span class="mode">🚶</span><b>步行3分钟 · 约200米</b>就在解放碑西侧</div>
 
-    <div class="card" style="animation-delay:.2s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Jiefangbei_CBD_20240721.jpg/1280px-Jiefangbei_CBD_20240721.jpg" alt="解放碑"></div>
+    <div class="card" onclick="openModal('jfb')" style="animation-delay:.15s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Jiefangbei_CBD_20240721.jpg/1280px-Jiefangbei_CBD_20240721.jpg" alt="解放碑"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
         <div class="c-time">09:00 · 打卡地标</div>
-        <div class="c-name">解放碑步行街</div>
-        <div class="c-desc">重庆城市精神地标。步行可达洪崖洞、八一好吃街。顺便逛好吃街：酸辣粉、烤苕皮、山城小汤圆一站式打卡</div>
+        <div class="c-name">解放碑 + 八一好吃街</div>
+        <div class="c-desc">城市精神地标，顺路逛好吃街：酸辣粉、烤苕皮、山城小汤圆</div>
         <div class="c-meta"><span class="price p-free">免费</span><span class="tag">小吃 ¥20/人</span></div>
       </div>
     </div>
+    <div class="conn"><span class="mode">🍲</span><b>午餐 · 步行8分钟到较场口</b>珮姐老火锅</div>
 
-    <div class="card" style="animation-delay:.3s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Homemade_Hotpot.jpg" alt="重庆火锅"></div>
+    <div class="card" onclick="openModal('hotpot')" style="animation-delay:.2s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Homemade_Hotpot.jpg" alt="重庆火锅"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
         <div class="c-time">12:00 · 午餐</div>
-        <div class="c-name">珮姐老火锅（洪崖洞总店）</div>
-        <div class="c-desc">24小时营业，大众点评必吃榜。牛油锅底辣中带微甜，老鹰茶解腻降火。必点：贡菜丸子、麻辣牛肉、8秒土豆片。选微辣起步！</div>
+        <div class="c-name">珮姐老火锅（较场口店）</div>
+        <div class="c-desc">必吃榜常客，牛油锅底辣中带微甜。选较场口店：离解放碑更近、等位比洪崖洞店少一半</div>
         <div class="c-meta"><span class="price p-paid">¥75/人</span><span class="tag">大众点评 4.7分</span></div>
       </div>
     </div>
+    <div class="conn"><span class="mode">🚶</span><b>步行15分钟 · 约1公里</b>或地铁1号线1站到小什字</div>
 
-    <div class="card" style="animation-delay:.4s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/%E9%87%8D%E5%BA%86%E9%95%BF%E6%B1%9F%E7%B4%A2%E9%81%93_-_Chongqing_Yangtze_River_Cableway_-_2015.04_-_panoramio.jpg/1280px-%E9%87%8D%E5%BA%86%E9%95%BF%E6%B1%9F%E7%B4%A2%E9%81%93_-_Chongqing_Yangtze_River_Cableway_-_2015.04_-_panoramio.jpg" alt="长江索道"></div>
+    <div class="card" onclick="openModal('baixiangju')" style="animation-delay:.25s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Chongqing_China_150731.jpg/1280px-Chongqing_China_150731.jpg" alt="白象居"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">14:00 · 体验</div>
-        <div class="c-name">长江索道</div>
-        <div class="c-desc">万里长江第一条空中走廊，单程4分30秒横跨长江。建议从南站上车（排队少一半）。2026暑期拥挤，提前公众号购票</div>
-        <div class="c-meta"><span class="price p-paid">¥30/人（单程）</span><span class="tag">官方公众号购票</span></div>
-      </div>
-    </div>
-
-    <div class="card" style="animation-delay:.5s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Chongqing_China_150731.jpg/1280px-Chongqing_China_150731.jpg" alt="白象居"></div>
-      <div class="card-body">
-        <div class="c-time">15:00 · 拍照</div>
+        <div class="c-time">14:00 · 拍照</div>
         <div class="c-name">白象居</div>
-        <div class="c-desc">24层无电梯老楼，空中连廊窗框同时框住索道+来福士+东水门大桥。《隐秘的角落》取景地。注意：住户家，小声拍照</div>
+        <div class="c-desc">《隐秘的角落》取景地，连廊窗框同时框住索道+来福士+东水门大桥。和索道北站相邻500米，顺路打卡</div>
         <div class="c-meta"><span class="price p-free">免费</span><span class="tag">王牌机位</span></div>
       </div>
     </div>
+    <div class="conn"><span class="mode">🚶</span><b>步行7分钟 · 约450米</b>到长江索道北站</div>
 
-    <div class="card" style="animation-delay:.6s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Hongyadong_night_lights_Chongqing.jpg/1280px-Hongyadong_night_lights_Chongqing.jpg" alt="洪崖洞夜景"></div>
+    <div class="card" onclick="openModal('suodao')" style="animation-delay:.3s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/%E9%87%8D%E5%BA%86%E9%95%BF%E6%B1%9F%E7%B4%A2%E9%81%93_-_Chongqing_Yangtze_River_Cableway_-_2015.04_-_panoramio.jpg/1280px-%E9%87%8D%E5%BA%86%E9%95%BF%E6%B1%9F%E7%B4%A2%E9%81%93_-_Chongqing_Yangtze_River_Cableway_-_2015.04_-_panoramio.jpg" alt="长江索道"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">18:00 · 夜景</div>
-        <div class="c-name">洪崖洞夜景</div>
-        <div class="c-desc">现实版《千与千寻》！11层吊脚楼夜景封神。从11楼进→全程下坡→千厮门大桥拍全景。亮灯约19:00-23:00。最佳机位：千厮门大桥中段+江北嘴江滩</div>
-        <div class="c-meta"><span class="price p-free">免费（需预约）</span><span class="tag">19:00亮灯</span></div>
+        <div class="c-time">15:00 · 过江体验</div>
+        <div class="c-name">长江索道（北站上车）</div>
+        <div class="c-desc">单程4分30秒横跨长江。此行顺序从北站上车最顺路——坐到南站后可顺逛龙门浩老街，地铁6号线2站返回渝中</div>
+        <div class="c-meta"><span class="price p-paid">¥30/人（单程）</span><span class="tag">公众号购票</span></div>
+      </div>
+    </div>
+    <div class="conn"><span class="mode">🚇</span><b>地铁6号线上新街→小什字 · 2站约10分钟</b>返回渝中休整</div>
+
+    <div class="card" onclick="openModal('hongyadong')" style="animation-delay:.35s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Hongyadong_night_lights_Chongqing.jpg/1280px-Hongyadong_night_lights_Chongqing.jpg" alt="洪崖洞夜景"><span class="more-hint">点击看详情 ↗</span></div>
+      <div class="card-body">
+        <div class="c-time">18:30 · 夜景</div>
+        <div class="c-name">戴家巷 → 洪崖洞</div>
+        <div class="c-desc">先逛洪崖洞旁的戴家巷崖壁步道（人少出片），再进洪崖洞11楼→1楼全程下坡。19:00亮灯</div>
+        <div class="c-meta"><span class="price p-free">免费（需预约）</span><span class="tag">亮灯19:00-23:00</span></div>
+      </div>
+    </div>
+    <div class="conn"><span class="mode">🚶</span><b>步行5分钟</b>上千厮门大桥</div>
+
+    <div class="card" onclick="openModal('qiansimen')" style="animation-delay:.4s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Qiansimen_Bridge_at_night_20251027.jpg" alt="千厮门大桥"><span class="more-hint">点击看详情 ↗</span></div>
+      <div class="card-body">
+        <div class="c-time">19:30 · 收官机位</div>
+        <div class="c-name">千厮门大桥</div>
+        <div class="c-desc">拍洪崖洞全景的最佳位置，桥中段回头即是《千与千寻》同款画面，一天的高光收尾</div>
+        <div class="c-meta"><span class="price p-free">免费</span><span class="tag">最佳机位</span></div>
       </div>
     </div>
 
   </div>
-  <div class="day-total bar-o"><span>Day 1 费用小计</span><span>≈ ¥165/人</span></div>
+  <div class="day-total bar-o"><span>Day 1 费用小计（含索道+火锅+小吃）</span><span>≈ ¥165/人</span></div>
 </div>
 
 <!-- ===== DAY 2 ===== -->
@@ -207,53 +292,57 @@
   <div class="dot c2">D2</div>
   <div class="day-hd">
     <div class="day-lb">DAY TWO · 市区深度</div>
-    <div class="day-tt">文艺市井线</div>
-    <div class="day-st">磁器口 → 李子坝穿楼 → 鹅岭二厂 → 南山夜景</div>
+    <div class="day-tt">西北 → 渝中 → 南岸 · 单向推进</div>
+    <div class="day-st">磁器口 → 鹅岭二厂 → 李子坝 → 南山一棵树</div>
+    <div class="day-logic"><b>🧭 路线逻辑：</b>按地理位置<b>从西北向东南单向推进</b>。磁器口（沙坪坝）地铁1号线直达鹅岭（注意：先去鹅岭再去李子坝，因为二厂在山上，之后沿三层马路<b>全程下坡</b>走到李子坝，反过来就要爬坡）。傍晚从李子坝打车过江到南山（全程唯一一段长交通，放在晚上正好接夜景）。</div>
   </div>
   <div class="stops">
 
-    <div class="card" style="animation-delay:.1s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/%E6%8B%A5%E6%8C%A4%E7%9A%84%E7%A3%81%E5%99%A8%E5%8F%A3_-_Ciqikou_Old_Town_-_2015.04_-_panoramio.jpg/1280px-%E6%8B%A5%E6%8C%A4%E7%9A%84%E7%A3%81%E5%99%A8%E5%8F%A3_-_Ciqikou_Old_Town_-_2015.04_-_panoramio.jpg" alt="磁器口古镇"></div>
+    <div class="card" onclick="openModal('ciqikou')" style="animation-delay:.1s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/%E6%8B%A5%E6%8C%A4%E7%9A%84%E7%A3%81%E5%99%A8%E5%8F%A3_-_Ciqikou_Old_Town_-_2015.04_-_panoramio.jpg/1280px-%E6%8B%A5%E6%8C%A4%E7%9A%84%E7%A3%81%E5%99%A8%E5%8F%A3_-_Ciqikou_Old_Town_-_2015.04_-_panoramio.jpg" alt="磁器口古镇"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
         <div class="c-time">08:30 · 千年古镇</div>
         <div class="c-name">磁器口古镇</div>
-        <div class="c-desc">千年巴渝古镇，青石板路+红灯笼+老茶馆。离开主街拐小巷才有老重庆味道。必吃：陈昌银麻花（27元）、古镇鸡杂（37元）</div>
+        <div class="c-desc">千年巴渝古镇，红灯笼+青石板。早上去人少，离开主街拐小巷才有老重庆味道</div>
         <div class="c-meta"><span class="price p-free">免费</span><span class="tag">小吃 ¥57/人</span></div>
       </div>
     </div>
+    <div class="conn"><span class="mode">🚇</span><b>地铁1号线 磁器口→鹅岭 · 直达约20分钟</b></div>
 
-    <div class="card" style="animation-delay:.2s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Liziba_Station_with_02031_%2820191224152311%29.jpg/1280px-Liziba_Station_with_02031_%2820191224152311%29.jpg" alt="李子坝轻轨穿楼"></div>
+    <div class="card" onclick="openModal('erchang')" style="animation-delay:.15s">
+      <div class="card-img-wrap"><div class="ph ph-p">🏭</div><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">12:00 · 网红打卡</div>
-        <div class="c-name">李子坝轻轨穿楼</div>
-        <div class="c-desc">8D魔幻地形代表！轻轨2号线从19层居民楼中间穿过，观景台正对穿楼点。建议乘2号线1车厢第一视角体验。附近：李子坝梁山鸡（40年老字号，人均86元）</div>
-        <div class="c-meta"><span class="price p-free">免费</span><span class="tag">午餐 ¥86/人</span></div>
-      </div>
-    </div>
-
-    <div class="card" style="animation-delay:.3s">
-      <div class="card-img-wrap"><div class="ph ph-p">🏭</div></div>
-      <div class="card-body">
-        <div class="c-time">14:30 · 文创园区</div>
+        <div class="c-time">11:30 · 文创园区</div>
         <div class="c-name">鹅岭二厂文创园</div>
-        <div class="c-desc">《从你的全世界路过》天台取景地。老印刷厂改造，工业风+文艺小店。免费观景平台看渝中全景，16:00-19:00拍日落最佳</div>
+        <div class="c-desc">《从你的全世界路过》取景地。先上山逛园区，之后就能一路下坡去李子坝——这是本日路线顺序的关键</div>
         <div class="c-meta"><span class="price p-free">免费</span><span class="tag">天台 ¥20可选</span></div>
       </div>
     </div>
+    <div class="conn"><span class="mode">🚶</span><b>三层马路下坡步行 · 约20分钟 · 1.2公里</b>沿途老重庆街景</div>
 
-    <div class="card" style="animation-delay:.4s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Chongqing_Skyline_At_Night.png/1280px-Chongqing_Skyline_At_Night.png" alt="重庆夜景"></div>
+    <div class="card" onclick="openModal('liziba')" style="animation-delay:.2s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Liziba_Station_with_02031_%2820191224152311%29.jpg/1280px-Liziba_Station_with_02031_%2820191224152311%29.jpg" alt="李子坝轻轨穿楼"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
-        <div class="c-time">20:00 · 夜景观赏</div>
+        <div class="c-time">14:00 · 网红打卡 + 午餐</div>
+        <div class="c-name">李子坝轻轨穿楼</div>
+        <div class="c-desc">下坡到达刚好错峰看穿楼+吃梁山鸡（40年老字号就在观景台旁）。比中午正峰期人少</div>
+        <div class="c-meta"><span class="price p-free">免费</span><span class="tag">午餐 ¥86/人</span></div>
+      </div>
+    </div>
+    <div class="conn"><span class="mode">🚕</span><b>打车过江 · 约30分钟 · △约30元</b>本日唯一长交通，直达南山</div>
+
+    <div class="card" onclick="openModal('nanshan')" style="animation-delay:.25s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Chongqing_Skyline_At_Night.png/1280px-Chongqing_Skyline_At_Night.png" alt="南山夜景"><span class="more-hint">点击看详情 ↗</span></div>
+      <div class="card-body">
+        <div class="c-time">17:30 · 日落+夜景</div>
         <div class="c-name">南山一棵树观景台</div>
-        <div class="c-desc">俯瞰渝中半岛全貌的经典C位，万家灯火+两江交汇尽收眼底。替代方案：鹅岭公园瞰胜楼（免费，人少视野更好）</div>
+        <div class="c-desc">日落前1小时到，一次收齐夕阳+夜景。俯瞰渝中半岛全貌的经典C位</div>
         <div class="c-meta"><span class="price p-paid">¥30/人</span><span class="tag">携程 4.3分</span></div>
       </div>
     </div>
 
   </div>
-  <div class="day-total bar-p"><span>Day 2 费用小计</span><span>≈ ¥275/人</span></div>
+  <div class="day-total bar-p"><span>Day 2 费用小计（含打车过江）</span><span>≈ ¥305/人</span></div>
 </div>
 
 <!-- ===== DAY 3 ===== -->
@@ -261,33 +350,35 @@
   <div class="dot c3">D3</div>
   <div class="day-hd">
     <div class="day-lb">DAY THREE · 自然奇观</div>
-    <div class="day-tt">武隆天生三桥</div>
+    <div class="day-tt">武隆天生三桥 · 单点深度</div>
     <div class="day-st">世界自然遗产 · 《变形金刚4》取景地</div>
+    <div class="day-logic"><b>🧭 路线逻辑：</b>武隆距市区约2小时车程，<b>一天只去这一个方向</b>最合理——拆成半天会全耗在路上。景区内是单向环线（入口→三桥→出口），不走回头路。若想加仙女山建议住武隆一晚，当天往返会很赶。</div>
   </div>
   <div class="stops">
 
-    <div class="card" style="animation-delay:.1s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Chongqing_North_Railway_Station_CRH380A_EMU.jpg" alt="重庆北站动车"></div>
+    <div class="card" onclick="openModal('train')" style="animation-delay:.1s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Chongqing_North_Railway_Station_CRH380A_EMU.jpg" alt="重庆北站动车"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
         <div class="c-time">07:00-09:30 · 交通</div>
         <div class="c-name">重庆 ↔ 武隆 火车</div>
-        <div class="c-desc">重庆北站出发（上图车站），约2小时到武隆站。再转公交/拼车到仙女山游客中心（约40分钟）。建议买往返票当天往返</div>
+        <div class="c-desc">重庆北站出发约2小时到武隆站，再转公交/拼车40分钟到仙女山游客中心。务必买早班车</div>
         <div class="c-meta"><span class="price p-paid">¥25/人/单程</span><span class="tag">携程实时票价</span></div>
       </div>
     </div>
+    <div class="conn"><span class="mode">🚌</span><b>景区接驳车 · 约40分钟</b>游客中心统一换乘</div>
 
-    <div class="card" style="animation-delay:.2s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/WUlong_Natural_Bridge.JPG" alt="武隆天生三桥"></div>
+    <div class="card" onclick="openModal('wulong')" style="animation-delay:.15s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/WUlong_Natural_Bridge.JPG" alt="武隆天生三桥"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
         <div class="c-time">10:30 · 世界遗产</div>
         <div class="c-name">武隆天生三桥</div>
-        <div class="c-desc">三座天然石拱桥+两个天坑，"三桥夹两坑"的地质奇观。《满城尽带黄金甲》《变形金刚4》取景地。全程步行约1.5-2小时，穿防滑鞋</div>
-        <div class="c-meta"><span class="price p-paid">¥125/人（旺季含观光车）</span><span class="tag">世界自然遗产</span></div>
+        <div class="c-desc">三桥夹两坑地质奇观，电梯下谷底后单向步行1.5-2小时。门票含观光车+电梯</div>
+        <div class="c-meta"><span class="price p-paid">¥125/人（旺季）</span><span class="tag">世界自然遗产</span></div>
       </div>
     </div>
 
   </div>
-  <div class="day-total bar-b"><span>Day 3 费用小计</span><span>≈ ¥315/人</span></div>
+  <div class="day-total bar-b"><span>Day 3 费用小计（含火车往返+门票+餐）</span><span>≈ ¥315/人</span></div>
 </div>
 
 <!-- ===== DAY 4 ===== -->
@@ -295,40 +386,44 @@
   <div class="dot c4">D4</div>
   <div class="day-hd">
     <div class="day-lb">DAY FOUR · 返程日</div>
-    <div class="day-tt">人文收官 + 返程</div>
-    <div class="day-st">三峡博物馆 → 老甘家江湖菜 → 采购特产 → 返程</div>
+    <div class="day-tt">一路向北 · 顺路直达火车站</div>
+    <div class="day-st">三峡博物馆 → 观音桥（午餐+特产）→ 重庆北站</div>
+    <div class="day-logic"><b>🧭 路线逻辑：</b>返程日核心是<b>别绕路</b>。三峡博物馆/人民大礼堂在渝中北侧 → 观音桥在江北（午餐老甘家+楼下超市买特产，同一商圈解决）→ 地铁3号线<b>一线直达</b>重庆北站。三个点连成一条向北的直线，行李越走越近车站。</div>
   </div>
   <div class="stops">
 
-    <div class="card" style="animation-delay:.1s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Three_Gorges_Museum_Chongqing.JPG/1280px-Three_Gorges_Museum_Chongqing.JPG" alt="三峡博物馆"></div>
+    <div class="card" onclick="openModal('bowuguan')" style="animation-delay:.1s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Three_Gorges_Museum_Chongqing.JPG/1280px-Three_Gorges_Museum_Chongqing.JPG" alt="三峡博物馆"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
         <div class="c-time">09:00 · 文化之旅</div>
-        <div class="c-name">三峡博物馆</div>
-        <div class="c-desc">免费预约，了解三峡人文历史。"壮丽三峡"展厅必看。旁边是人民大礼堂（外观打卡）。周一闭馆</div>
-        <div class="c-meta"><span class="price p-free">免费（需预约）</span><span class="tag">周一闭馆</span></div>
+        <div class="c-name">三峡博物馆 + 人民大礼堂</div>
+        <div class="c-desc">两者面对面，一次打卡两个。"壮丽三峡"展厅必看，周一闭馆需提前预约</div>
+        <div class="c-meta"><span class="price p-free">免费（需预约）</span><span class="tag">大礼堂外观免费</span></div>
       </div>
     </div>
+    <div class="conn"><span class="mode">🚇</span><b>地铁2号线→3号线 · 约20分钟</b>曾家岩→牛角沱→观音桥</div>
 
-    <div class="card" style="animation-delay:.2s">
-      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Spicy_crayfish.jpg" alt="麻辣小龙虾"></div>
+    <div class="card" onclick="openModal('laoganjia')" style="animation-delay:.15s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Spicy_crayfish.jpg" alt="麻辣小龙虾"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
         <div class="c-time">12:00 · 午餐</div>
-        <div class="c-name">老甘家小龙虾江湖菜</div>
-        <div class="c-desc">连续6年大众点评必吃榜！招牌麻辣小龙虾（6种花椒3种辣椒）、铁山坪花椒鸡、秋秋妹耙凤爪。洋河总店最正宗，建议提前预约</div>
+        <div class="c-name">老甘家小龙虾江湖菜（洋河总店）</div>
+        <div class="c-desc">连续6年必吃榜，麻辣小龙虾+江湖菜。洋河中路就在观音桥商圈内，吃完楼下就能买特产</div>
         <div class="c-meta"><span class="price p-paid">¥100/人</span><span class="tag">人气榜 No.1</span></div>
       </div>
     </div>
+    <div class="conn"><span class="mode">🛒</span><b>同商圈步行5分钟</b>观音桥永辉/重百超市</div>
 
-    <div class="card" style="animation-delay:.3s">
-      <div class="card-img-wrap"><div class="ph ph-o">🎁</div></div>
+    <div class="card" onclick="openModal('techan')" style="animation-delay:.2s">
+      <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/5/59/%E8%A7%82%E9%9F%B3%E6%A1%A55.jpg" alt="观音桥商圈"><span class="more-hint">点击看详情 ↗</span></div>
       <div class="card-body">
         <div class="c-time">13:30 · 采购伴手礼</div>
-        <div class="c-name">采购特产</div>
-        <div class="c-desc">去永辉/重百超市买，不要在景区买！推荐：桥头火锅底料、陈昌银麻花、合川桃片、江津米花糖、涪陵榨菜</div>
-        <div class="c-meta"><span class="price p-paid">¥50/人</span><span class="tag">超市比景区便宜一半</span></div>
+        <div class="c-name">观音桥商圈采购特产</div>
+        <div class="c-desc">桥头火锅底料、陈昌银麻花、合川桃片、江津米花糖。超市价格比景区便宜一半</div>
+        <div class="c-meta"><span class="price p-paid">¥50/人</span><span class="tag">超市比景区省50%</span></div>
       </div>
     </div>
+    <div class="conn"><span class="mode">🚇</span><b>地铁3号线 观音桥→重庆北站 · 直达约15分钟</b>晚上火车回怀化</div>
 
   </div>
   <div class="day-total bar-g"><span>Day 4 费用小计</span><span>≈ ¥167/人</span></div>
@@ -340,30 +435,28 @@
 <div class="sec" style="background:linear-gradient(180deg,rgba(255,107,53,.03),transparent);">
   <div class="sec-t">BUDGET</div>
   <div class="sec-h">费用总览 · 两人合计</div>
-
   <div class="budget-g">
     <div class="b-card"><div class="b-icon">🚄</div><div class="b-label">往返火车</div><div class="b-amt" style="color:#ff6b35">¥740</div><div class="b-note">硬卧 · 两人往返</div></div>
     <div class="b-card"><div class="b-icon">🏨</div><div class="b-label">住宿 3晚</div><div class="b-amt" style="color:#a855f7">¥1,000</div><div class="b-note">舒适型 · 两人均摊</div></div>
-    <div class="b-card"><div class="b-icon">🍜</div><div class="b-label">吃喝玩乐</div><div class="b-amt" style="color:#00d4ff">¥1,852</div><div class="b-note">火锅+索道+门票+小吃</div></div>
-    <div class="b-card"><div class="b-icon">🚇</div><div class="b-label">市内交通</div><div class="b-amt" style="color:#34d399">¥100</div><div class="b-note">地铁为主 · 两人合计</div></div>
+    <div class="b-card"><div class="b-icon">🍜</div><div class="b-label">吃喝玩乐</div><div class="b-amt" style="color:#00d4ff">¥1,912</div><div class="b-note">含Day2打车过江</div></div>
+    <div class="b-card"><div class="b-icon">🚇</div><div class="b-label">市内交通</div><div class="b-amt" style="color:#34d399">¥100</div><div class="b-note">地铁为主</div></div>
   </div>
-
   <table>
     <thead><tr><th>项目</th><th>单价/人</th><th>人数</th><th>小计</th></tr></thead>
     <tbody>
       <tr><td>🚄 怀化↔重庆 硬卧往返</td><td>△约¥185×2</td><td>2人</td><td class="amt">△约¥740</td></tr>
       <tr><td>🏨 住宿（舒适型×3晚）</td><td>△约¥167/晚</td><td>2人</td><td class="amt">△约¥1,000</td></tr>
       <tr><td>🚇 市内地铁+打车</td><td>约¥50</td><td>2人</td><td class="amt">约¥100</td></tr>
-      <tr><td>🍜 Day1 到达日</td><td>约¥165</td><td>2人</td><td class="amt">约¥330</td></tr>
-      <tr><td>🏮 Day2 市区</td><td>约¥275</td><td>2人</td><td class="amt">约¥550</td></tr>
+      <tr><td>🍜 Day1 渝中环线</td><td>约¥165</td><td>2人</td><td class="amt">约¥330</td></tr>
+      <tr><td>🏮 Day2 市区（含打车过江）</td><td>约¥305</td><td>2人</td><td class="amt">约¥610</td></tr>
       <tr><td>🌉 Day3 武隆</td><td>约¥315</td><td>2人</td><td class="amt">约¥630</td></tr>
       <tr><td>🦐 Day4 返程日</td><td>约¥167</td><td>2人</td><td class="amt">约¥334</td></tr>
-      <tr class="total-r"><td>💰 小计</td><td></td><td></td><td class="amt" style="font-size:24px">约¥3,684</td></tr>
-      <tr><td style="color:rgba(255,255,255,.35)">预留机动（饮料/零食/临时打车）</td><td></td><td></td><td style="color:rgba(255,255,255,.35)">△约¥316</td></tr>
+      <tr class="total-r"><td>💰 小计</td><td></td><td></td><td class="amt" style="font-size:24px">约¥3,744</td></tr>
+      <tr><td style="color:rgba(255,255,255,.35)">预留机动</td><td></td><td></td><td style="color:rgba(255,255,255,.35)">△约¥256</td></tr>
       <tr class="total-r grand-total"><td>🎯 含机动总计</td><td></td><td></td><td class="amt" style="font-size:26px">约¥4,000</td></tr>
     </tbody>
   </table>
-  <p style="text-align:center;margin-top:18px;font-size:12px;color:rgba(255,255,255,.25);">人均约¥2,000 · 旺季住宿可能上浮20-30% · 以实际为准</p>
+  <p style="text-align:center;margin-top:18px;font-size:12px;color:rgba(255,255,255,.25);">人均约¥2,000 · △为预估值 · 旺季住宿可能上浮20-30% · 以实际为准</p>
 </div>
 
 <!-- ===== TIPS ===== -->
@@ -380,12 +473,221 @@
   </div>
 </div>
 
-<!-- ===== FOOTER ===== -->
 <div class="ft">
-  <p>重庆旅行计划 · 怀化出发 · 4天3晚 · 两人同行</p>
+  <p>重庆旅行计划 · 怀化出发 · 4天3晚 · 两人同行 · 顺路优化版</p>
   <p style="margin-top:6px;">所有价格基于2026年8月多源验证数据 · 出发前请确认实时价格</p>
   <p style="margin-top:6px;">图片来源：Wikimedia Commons（CC协议）</p>
 </div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-mask" id="mask" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="m-gallery">
+      <button class="m-close" onclick="closeModal()">✕</button>
+      <img id="mImg" src="" alt="">
+      <div class="m-count" id="mCount"></div>
+      <button class="m-gbtn m-prev" onclick="nav(-1)">‹</button>
+      <button class="m-gbtn m-next" onclick="nav(1)">›</button>
+    </div>
+    <div class="m-thumbs" id="mThumbs"></div>
+    <div class="m-body">
+      <div class="m-tag" id="mTag"></div>
+      <div class="m-name" id="mName"></div>
+      <div class="m-intro" id="mIntro"></div>
+      <div class="m-sec"><div class="m-sec-t">✨ 玩法亮点</div><ul id="mHigh"></ul></div>
+      <div class="m-sec"><div class="m-sec-t">💡 实用贴士</div><ul id="mTips"></ul></div>
+      <div class="m-sec"><div class="m-sec-t">🧭 怎么去</div><ul id="mTransit"></ul></div>
+      <div class="m-price-row" id="mPrice"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SPOTS = {
+  mian: {
+    tag:"DAY 1 · 早餐", name:"花市豌杂面（花市总店）",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Chongqing_Xiaomian_with_fried_eggs.jpg/1280px-Chongqing_Xiaomian_with_fried_eggs.jpg","重庆小面配煎蛋，灵魂搭配"]],
+    intro:"开了20多年的老字号，因开在鲁祖庙花市而得名，是重庆豌杂面的代表之一。豌豆粒粒软糯流沙、入口即化，杂酱肥瘦恰到、入味不腻，拌匀后每根面条都裹着酱。分量比同类馆子大，食量大的人点二两即可。",
+    highlights:["招牌豌杂面：豌豆+杂酱各占一边，红油翻上后拌匀","必加煎蛋，这是本地人的标准吃法","干溜（少汤）更入味，汤面更顺口","还有牛肉面，块头大、软烂鲜香"],
+    tips:["二两就够，分量偏大","辣度默认已偏辣，怕辣提前说\"少海椒\"","服务偏\"冷漠\"是老店特色，端面取筷自己动手","早上7点开门，到达日吃早餐正好"],
+    transit:["地址：渝中区民生路9号（鲁祖庙花市入口旁）","地铁：1/2号线较场口站步行约5分钟","从解放碑步行街步行约3分钟"],
+    price:[["¥15/人","p-paid"],["城市惠评分 4.5","tag"],["营业 07:00-21:00","tag"]]
+  },
+  jfb: {
+    tag:"DAY 1 · 地标", name:"解放碑步行街 + 八一好吃街",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Jiefangbei_CBD_20240721.jpg/1280px-Jiefangbei_CBD_20240721.jpg","解放碑步行街实景，纪念碑与CBD高楼"],["https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/%E9%87%8D%E5%BA%86%E5%B8%82%E6%B8%9D%E4%B8%AD%E5%8C%BA%E5%8D%8A%E5%B2%9B.jpg/1280px-%E9%87%8D%E5%BA%86%E5%B8%82%E6%B8%9D%E4%B8%AD%E5%8C%BA%E5%8D%8A%E5%B2%9B.jpg","渝中半岛全景（解放碑所在）"]],
+    intro:"重庆的城市精神地标，全国第一条商业步行街。纪念碑庄重大气，周边高楼林立。它的价值不在\"看\"而在\"吃\"——旁边的八一路好吃街汇集好又来酸辣粉、山城汤圆、鬼酥肉等上百种小吃，是快速尝遍重庆味的集中地。",
+    highlights:["解放碑纪念碑打卡（人最多，早去）","八一好吃街：酸辣粉¥8-12、烤苕皮、山城小汤圆","周边商圈：时代广场、环球金融中心WFC观景台（可选）","作为Day1环线的起点，吃饭购物一站解决"],
+    tips:["只逛不买纪念品，特产回观音桥超市买","好吃街小吃往里走更便宜，门口最贵","白天人流已不少，别停留太久，核心是吃饭+拍照"],
+    transit:["地铁：1/2号线较场口站，6号口出即达","住宿选这附近，Day1全程步行可达"],
+    price:[["免费","p-free"],["小吃预算 ¥20/人","tag"]]
+  },
+  hotpot: {
+    tag:"DAY 1 · 午餐", name:"珮姐老火锅（较场口店）",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/4/41/Homemade_Hotpot.jpg","牛油红汤火锅"],["https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Chongqing_hotpot_2.jpg/1280px-Chongqing_hotpot_2.jpg","沸腾锅底：鸭血、鳝段"]],
+    intro:"重庆火锅排队王，24小时营业的大众点评必吃榜常客。锅底以辣著称，牛油+醪糟+冰糖，辣中带微甜更符合外地人口味；汤底用老鹰茶代替高汤，解腻降火，肠胃敏感者也能接受。选较场口店而非洪崖洞店：位置离解放碑更近，等位时间约少一半。",
+    highlights:["必点：贡菜丸子、麻辣牛肉、8秒土豆片、屠场鲜毛肚","毛肚\"七上八下\"涮8-10秒，入口脆嫩","蘸料只加香油+蒜泥+葱花，不加麻酱","收尾来一碗红糖冰汤圆解辣"],
+    tips:["重庆\"微辣\"≈外地中辣，第一次务必点微辣","凭3日内到渝车票可享8.8折（部分门店）","等位1小时+是常态，可先取号再逛","肠胃弱者备点药，配唯怡豆奶"],
+    transit:["较场口店：地铁1/2号线较场口站即达","从解放碑步行约8分钟"],
+    price:[["¥75/人","p-paid"],["大众点评 4.7","tag"],["24小时营业","tag"]]
+  },
+  baixiangju: {
+    tag:"DAY 1 · 拍照", name:"白象居",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Chongqing_China_150731.jpg/1280px-Chongqing_China_150731.jpg","白象居片区密集的老居民楼"]],
+    intro:"建于1992年的24层无电梯居民楼，因《隐秘的角落》《少年的你》取景爆红。1楼和13楼（平台层）都通马路，是重庆8D地形的活标本。3-4号楼之间的空中连廊是王牌机位：窗框能同时框住长江索道、来福士、东水门大桥，缆车5-10分钟一班，开连拍抓拍。",
+    highlights:["3-4号楼空中连廊：索道+来福士+大桥同框","Z字复古楼梯：电影感十足","胖哥面庄S弯道：山城老街道长焦大片","索道缆车穿楼画面：连拍抓取"],
+    tips:["⚠️ 这里是住户家！小声拍照、不敲门、不堵楼道","24层无电梯，台阶多，穿平底鞋","9-11点、16-18点光线最佳且避开旅行团","导航搜\"白象居3号楼\""],
+    transit:["地铁：1/6号线小什字站7号口，步行8-10分钟","从解放碑步行约15分钟","与长江索道北站相邻约450米，顺路"],
+    price:[["免费","p-free"],["居民楼 · 非景区","tag"]]
+  },
+  suodao: {
+    tag:"DAY 1 · 过江体验", name:"长江索道（北站上车）",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/%E9%87%8D%E5%BA%86%E9%95%BF%E6%B1%9F%E7%B4%A2%E9%81%93_-_Chongqing_Yangtze_River_Cableway_-_2015.04_-_panoramio.jpg/1280px-%E9%87%8D%E5%BA%86%E9%95%BF%E6%B1%9F%E7%B4%A2%E9%81%93_-_Chongqing_Yangtze_River_Cableway_-_2015.04_-_panoramio.jpg","索道轿厢横跨长江"]],
+    intro:"1987年通车的\"万里长江第一条空中走廊\"，全长1166米，单程4分30秒，曾是市民通勤工具，现在是重庆城市名片，《疯狂的王石》《极限挑战》等多部影视综艺取景。本行程从北站上车最顺路：坐到南站后顺逛龙门浩老街，再地铁6号线2站返回渝中，不走回头路。",
+    highlights:["单程4分30秒俯瞰长江+渝中天际线","抢右侧靠窗位（北站→南站方向）视野最佳","南站出来顺路逛龙门浩老街/下浩里","每月有1-2天维护停运，出行前查公众号"],
+    tips:["只买单程！往返要重新排队，风景相同","提前\"长江索道\"公众号购票自动排号","节假日排队1小时+，2026暑期车厢拥挤（媒体已报道）有心理准备","心脏病、恐高、孕妇不宜"],
+    transit:["北站：地铁1/6号线小什字站5号口步行30米","南站：6号线/环线上新街站2号口","本行程：白象居→步行7分钟→北站上车"],
+    price:[["¥30/人 单程","p-paid"],["往返¥50（不推荐）","tag"],["1.3米以下儿童免票","tag"]]
+  },
+  hongyadong: {
+    tag:"DAY 1 · 夜景", name:"戴家巷 + 洪崖洞",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Hongyadong_night_lights_Chongqing.jpg/1280px-Hongyadong_night_lights_Chongqing.jpg","洪崖洞夜景全景，吊脚楼灯火"],["https://upload.wikimedia.org/wikipedia/commons/1/1e/%E6%B4%AA%E5%B4%96%E6%B4%9E%E5%A4%9C%E6%99%AF_-_panoramio.jpg","洪崖洞近景：红灯笼吊脚楼"]],
+    intro:"现实版《千与千寻》：11层吊脚楼建筑群依嘉陵江而建，夜晚亮灯后如宫崎骏动画中的奇幻世界。正确打开方式是\"远观为主、快进快出\"——先逛旁边的戴家巷崖壁步道（小众人少），再从洪崖洞11楼进、1楼出全程下坡，最后到千厮门大桥拍全景。",
+    highlights:["戴家巷崖壁步道：小众免费，老街+吊脚楼侧景","11楼城市阳台：平视千厮门大桥","1楼滨江路：仰拍整栋吊脚楼","蓝调时刻18:10-19:10出片天花板"],
+    tips:["节假日/周末需在\"洪崖洞\"公众号实名预约（提前5天）","夏季19:00亮灯、23:00熄灯；冬季18:30亮灯","21:30后旅行团离场，错峰舒适","别信\"快速通道\"\"带路\"——全是骗局，电梯全免费","内部商铺同质化严重，远观>逛街"],
+    transit:["地铁：1/6号线小什字站9号口步行5分钟到11楼入口","打车定位\"洪崖洞11楼沧白路\"，千万别定位1楼","从千厮门大桥步行5分钟即达"],
+    price:[["免费（需预约）","p-free"],["亮灯 19:00-23:00","tag"],["游玩 2-3小时","tag"]]
+  },
+  qiansimen: {
+    tag:"DAY 1 · 收官机位", name:"千厮门大桥",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/b/b8/Qiansimen_Bridge_at_night_20251027.jpg","千厮门大桥夜景：红色斜拉桥+江面游船"]],
+    intro:"连接渝中与江北的公轨两用斜拉桥，红色桥身是重庆夜景的标志性元素。桥中段人行道是拍洪崖洞全景的最佳机位——回头即是《千与千寻》同款画面，桥下江面游船灯火穿梭。Day1在这里收官，一天的魔幻体验定格。",
+    highlights:["桥中段拍洪崖洞全景+大桥同框","江北嘴方向下桥可到大剧院江滩（拍倒影）","晚上桥上有江风，夏天很舒服","游船灯光秀时段（约20:00-22:00）最出片"],
+    tips:["人行道在桥两侧，靠洪崖洞一侧拍照","手机开夜景模式/广角更有层次","注意脚下自行车道，别站着不动","拍完步行10分钟回解放碑地铁站"],
+    transit:["从洪崖洞11楼出门右转步行100米上桥","地铁6号线大剧院站也可到达江北一侧"],
+    price:[["免费","p-free"],["最佳时段 19:30-22:00","tag"]]
+  },
+  ciqikou: {
+    tag:"DAY 2 · 千年古镇", name:"磁器口古镇",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/%E6%8B%A5%E6%8C%A4%E7%9A%84%E7%A3%81%E5%99%A8%E5%8F%A3_-_Ciqikou_Old_Town_-_2015.04_-_panoramio.jpg/1280px-%E6%8B%A5%E6%8C%A4%E7%9A%84%E7%A3%81%E5%99%A8%E5%8F%A3_-_Ciqikou_Old_Town_-_2015.04_-_panoramio.jpg","磁器口主街：红灯笼与人流"],["https://upload.wikimedia.org/wikipedia/commons/c/c9/Gateway_to_temple_in_Ciqikou%2C_Chongqing.JPG","磁器口宝轮寺山门"]],
+    intro:"始于宋真宗咸平年间的千年古镇，嘉陵江畔重要的水陆码头，\"一条石板路，千年磁器口\"。主街商业化较重，但拐进小巷就能找到陡峭石阶、古老庭院和老茶馆。上午9点前到，人少光线柔，逛2-3小时刚好接上中午去鹅岭。",
+    highlights:["宝轮寺：登高俯瞰古镇+嘉陵江，唐代古寺","陈昌银麻花总店：现炸现卖，嘎吱脆","古镇鸡杂：泡椒味浓，配米饭两碗起","转运楼川剧变脸+盖碗茶"],
+    tips:["离开主街往小巷走才有老重庆味道","麻花认准陈昌银/夏麻花，山寨店多","节假日单向限流，工作日上午最佳","石板路湿滑，防滑鞋"],
+    transit:["地铁：1号线磁器口站1号口，步行5分钟","从解放碑乘1号线直达约25分钟","下一站：同1号线到鹅岭站，无需换乘"],
+    price:[["免费","p-free"],["陈麻花 ¥27","tag"],["鸡杂 ¥37/人","tag"]]
+  },
+  erchang: {
+    tag:"DAY 2 · 文创园区", name:"鹅岭二厂文创园",
+    images:[],
+    intro:"前身是民国中央银行印钞厂、后来的重庆印制二厂，2017年改造为文创园，因电影《从你的全世界路过》的天台戏份爆红。工业风老厂房+文艺小店+观景平台，是重庆文艺青年的聚集地。放在李子坝之前是路线关键：园区在山上，逛完沿三层马路全程下坡到李子坝，省力不绕路。",
+    highlights:["爱情天台：电影取景地（¥20，可选）","免费观景平台：俯瞰渝中全景","工业风小巷+文艺小店适合拍照","16:00-19:00拍日落最佳（本行程上午到，光线亦佳）"],
+    tips:["园区公共区域免费，只有天台收费","懒人方案：李子坝有穿梭巴士¥6直达二厂（但我们反向下坡走更顺）","坡上温度比江边低，备件薄外套","文创店可逛不一定要买"],
+    transit:["地铁：1号线鹅岭站2A口，步行10-15分钟缓上坡","从磁器口乘1号线直达约20分钟","下一站：三层马路下坡步行20分钟到李子坝"],
+    price:[["免费","p-free"],["爱情天台 ¥20可选","tag"],["游玩 1.5-2小时","tag"]]
+  },
+  liziba: {
+    tag:"DAY 2 · 网红打卡", name:"李子坝轻轨穿楼",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Liziba_Station_with_02031_%2820191224152311%29.jpg/1280px-Liziba_Station_with_02031_%2820191224152311%29.jpg","单轨列车穿楼而过"]],
+    intro:"重庆8D魔幻地形的代表：轨道2号线从19层居民楼的6-8层中间穿过，楼与轨道同步设计、互不干扰（楼内壁与桥墩有20厘米距离）。1998年设计、2006年运营，如今是最火的免费打卡点。从鹅岭二厂沿三层马路下坡到达，14:00左右错峰看穿楼+吃梁山鸡，节奏刚好。",
+    highlights:["A口观景台：正对穿楼点，蹲低拍\"口吞轻轨\"","乘2号线1车厢：第一视角体验穿楼","揽胜亭：小众高视角俯拍","附近李子坝梁山鸡：40年老字号药膳红汤"],
+    tips:["观景台免费无预约，列车3-5分钟一班","纯打卡20-45分钟足够","打车导航\"李子坝观景平台\"不是\"李子坝站\"","居民楼私人区域禁止入内拍摄"],
+    transit:["地铁：2号线李子坝站1号口","从鹅岭二厂下坡步行约20分钟","下一站：打车约30分钟（△¥30）过江到南山"],
+    price:[["免费","p-free"],["梁山鸡 ¥86/人","tag"],["打卡 20-45分钟","tag"]]
+  },
+  nanshan: {
+    tag:"DAY 2 · 夜景观赏", name:"南山一棵树观景台",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Chongqing_Skyline_At_Night.png/1280px-Chongqing_Skyline_At_Night.png","俯瞰渝中半岛夜景"],["https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/%E9%87%8D%E5%BA%86%E5%B8%82%E6%B8%9D%E4%B8%AD%E5%8C%BA%E5%8D%8A%E5%B2%9B.jpg/1280px-%E9%87%8D%E5%BA%86%E5%B8%82%E6%B8%9D%E4%B8%AD%E5%8C%BA%E5%8D%8A%E5%B2%9B.jpg","渝中半岛白天全景对比"]],
+    intro:"与渝中半岛隔江相望的临江半山观景台，因一棵百年黄葛树得名。这里是俯瞰重庆全景的经典C位：白天看两江交汇\"鸳鸯锅\"，夜晚万家灯火如星河坠落。日落前1小时（约17:30）到达，一次收齐夕阳+夜景渐变。",
+    highlights:["日落+夜景一键双收（17:30-20:00黄金时段）","6层观景阁+露天平台多个机位","免费高倍望远镜","顺路吃南山泉水鸡（山下一条街）"],
+    tips:["门票¥30，城区探照灯22:00关闭，别去太晚","评价两极：人超多+设施一般，介意可换鹅岭瞰胜楼（免费人少视野更好）","山上打车难，返程提前叫车或让司机等","江边风大，带薄外套"],
+    transit:["从李子坝打车约30分钟（△¥30），本日唯一长交通","公交：上新街站转打车上山","看完打车回解放碑约25分钟"],
+    price:[["¥30/人","p-paid"],["携程 4.3分","tag"],["黄金时段 17:30-20:00","tag"]]
+  },
+  train: {
+    tag:"DAY 3 · 交通", name:"重庆 ↔ 武隆 火车",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/5/59/Chongqing_North_Railway_Station_CRH380A_EMU.jpg","重庆北站的CRH动车组"]],
+    intro:"重庆北站→武隆站约2小时，是去武隆最省钱稳定的方式。出武隆站后转乘公交或拼车约40分钟到仙女山游客中心（金字塔形建筑）。务必买早班车（7点左右），才能保证10:30前进景区、16:00前返程。",
+    highlights:["重庆北站出发，地铁3号线/10号线直达","武隆站→游客中心：公交约¥5-10或拼车¥15","建议提前在12306买好往返票","回程选17:00左右车次，19点前回市区吃晚饭"],
+    tips:["武隆站到景区还有40分钟，别掐点","旺季（暑假/节假日）提前3天购票","自驾不推荐：山路弯道多+停车难","晕车者备晕车药，盘山公路弯多"],
+    transit:["去程：地铁3号线到重庆北站南广场","武隆站→游客中心：公交/拼车40分钟","景区内：门票含观光车接驳"],
+    price:[["¥25/人/单程","p-paid"],["往返¥50","tag"],["△携程实时价","tag"]]
+  },
+  wulong: {
+    tag:"DAY 3 · 世界遗产", name:"武隆天生三桥",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/d/dc/WUlong_Natural_Bridge.JPG","天生桥峡谷：抬头一线天"],["https://upload.wikimedia.org/wikipedia/commons/5/53/%E9%87%8D%E5%BA%86%E6%AD%A6%E9%9A%86%E4%BB%99%E5%A5%B3%E5%B1%B1_-_panoramio.jpg","仙女山草原（如加住一晚可顺游）"]],
+    intro:"世界自然遗产、国家5A级景区：天龙桥、青龙桥、黑龙桥三座天然石拱桥横跨羊水河峡谷，夹着两个天坑，\"三桥夹两坑\"为亚洲最大天生桥群。《满城尽带黄金甲》唯一外景地天福官驿、《变形金刚4》取景都在这里。电梯下到谷底后单向步行游览，不走回头路。",
+    highlights:["天龙桥：亚洲最大天生桥，桥下天福官驿","玻璃观景台：俯瞰天坑（可选）","谷底步道1.5-2小时，全程下坡+缓上","出口电瓶车¥15不建议坐，步行10分钟"],
+    highlights2:null,
+    tips:["门票旺季¥125（含观光车+电梯），线上提前预约","台阶多，防滑运动鞋+带水和小零食","旺季热门拍照点排队，开门冲或下午4点去","景区补给点少，自备干粮","山区比市区低3-5°C，备薄外套"],
+    transit:["游客中心统一乘观光车进景区","游览顺序：入口→电梯下谷底→天龙桥→青龙桥→黑龙桥→出口","出景区坐接驳车回游客中心"],
+    price:[["¥125/人（旺季含车）","p-paid"],["淡季 ¥95","tag"],["游玩 3-4小时","tag"]]
+  },
+  bowuguan: {
+    tag:"DAY 4 · 文化之旅", name:"三峡博物馆 + 人民大礼堂",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Three_Gorges_Museum_Chongqing.JPG/1280px-Three_Gorges_Museum_Chongqing.JPG","重庆中国三峡博物馆"],["https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Chongqing_Great_Hall_of_the_People_20240721_135702_%282%29.jpg/1280px-Chongqing_Great_Hall_of_the_People_20240721_135702_%282%29.jpg","人民大礼堂绿色穹顶"]],
+    intro:"重庆中国三峡博物馆是首批国家一级博物馆，与人民大礼堂隔广场相望——一个现代一个古典，面对面一次打卡两个地标。馆内\"壮丽三峡\"展厅用文物+场景还原长江三峡的人文历史，环幕电影《大三峡》值得一看。",
+    highlights:["壮丽三峡展厅（核心必看）","环幕数码电影《大三峡》","汉代雕塑艺术、历代钱币展厅","对面人民大礼堂：仿天坛设计，外观打卡"],
+    tips:["免费但需提前预约（公众号\"重庆中国三峡博物馆\"）","周一闭馆！返程日是周五六日没问题","馆内有电梯，带老人轻松","参观2小时足够，别耽误中午观音桥吃饭"],
+    transit:["地铁：2号线曾家岩站A口步行5分钟","从解放碑酒店出发约15分钟","下一站：地铁2号线→3号线约20分钟到观音桥"],
+    price:[["免费（需预约）","p-free"],["周一闭馆","tag"],["游玩 2小时","tag"]]
+  },
+  laoganjia: {
+    tag:"DAY 4 · 午餐", name:"老甘家小龙虾江湖菜（洋河总店）",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/f/f3/Spicy_crayfish.jpg","麻辣小龙虾成品"]],
+    intro:"连续6年上榜大众点评必吃榜，重庆小龙虾·江湖菜的\"扛把子\"。麻辣小龙虾用石柱红辣椒+茂汶花椒，6种花椒3种辣椒炒制，\"舌尖蹦迪\"级的麻辣体验。选洋河中路总店：就在观音桥商圈内，吃完步行5分钟就能买特产，完美衔接返程动线。",
+    highlights:["招牌麻辣小龙虾（大众点评小龙虾菜品榜第一）","铁山坪花椒鸡：麻辣鲜香下饭神器","秋秋妹耙凤爪：一抿就化","歌乐山辣子鸡：辣椒里找鸡丁"],
+    tips:["饭点排队严重，建议11:30前到或提前预约","小龙虾按个头分3个价位，基础款8-9钱已很大","不能吃辣点蒜蓉味","4人人均更划算，两人点3-4个菜即可"],
+    transit:["地址：江北区洋河中路91号（近观音桥）","地铁：3号线观音桥站步行约10分钟","吃完步行5分钟到超市买特产"],
+    price:[["¥100/人","p-paid"],["必吃榜6年","tag"],["11:00-次日2:00","tag"]]
+  },
+  techan: {
+    tag:"DAY 4 · 伴手礼", name:"观音桥商圈采购特产",
+    images:[["https://upload.wikimedia.org/wikipedia/commons/5/59/%E8%A7%82%E9%9F%B3%E6%A1%A55.jpg","观音桥步行街商圈实景"]],
+    intro:"返程前的最后一站：在观音桥的永辉/重百超市采购特产，价格比磁器口、洪崖洞景区便宜一半，且不用人挤人。买完直接地铁3号线15分钟直达重庆北站，动线零浪费。",
+    highlights:["桥头火锅底料：重庆老字号，块状牛油最正宗","陈昌银麻花：超市有专柜，不用从磁器口背","合川桃片、江津米花糖：传统糕点","涪陵榨菜：便宜实用的手信"],
+    tips:["景区同款价格翻倍，坚持超市购买","火锅底料选块状牛油型，桥头/德庄都稳","行李留点空间，底料有真空包装不易碎","网上下单也可包邮到家，现场买更有仪式感"],
+    transit:["观音桥商圈内：永辉超市/重百超市多家","采购后：地铁3号线观音桥站→重庆北站，直达约15分钟","预留至少40分钟到站取票安检"],
+    price:[["预算 ¥50/人","p-paid"],["比景区省约50%","tag"],["超市营业至22:00","tag"]]
+  }
+};
+
+let cur=null, curIdx=0, curImgs=[];
+function openModal(id){
+  const s=SPOTS[id]; if(!s) return;
+  cur=s; curImgs=s.images||[]; curIdx=0;
+  document.getElementById('mTag').textContent=s.tag;
+  document.getElementById('mName').textContent=s.name;
+  document.getElementById('mIntro').textContent=s.intro;
+  const fill=(id2,arr)=>{const el=document.getElementById(id2);el.innerHTML='';(arr||[]).forEach(t=>{const li=document.createElement('li');li.textContent=t;el.appendChild(li);});el.parentElement.style.display=(arr&&arr.length)?'block':'none';};
+  fill('mHigh',s.highlights);
+  fill('mTips',s.tips);
+  fill('mTransit',s.transit);
+  const pr=document.getElementById('mPrice');pr.innerHTML='';
+  (s.price||[]).forEach(([txt,cls])=>{const sp=document.createElement('span');sp.className='price '+(cls==='tag'?'tag':cls);sp.textContent=txt;pr.appendChild(sp);});
+  const th=document.getElementById('mThumbs');th.innerHTML='';
+  if(curImgs.length>0){ showImg(0); curImgs.forEach((im,i)=>{const t=document.createElement('img');t.src=im[0];t.onclick=()=>showImg(i);t.id='th'+i;th.appendChild(t);}); th.style.display='flex'; document.querySelector('.m-gallery').style.display='block'; }
+  else { document.getElementById('mImg').removeAttribute('src'); document.querySelector('.m-gallery').style.display='none'; th.style.display='none'; }
+  document.getElementById('mask').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function showImg(i){
+  if(!curImgs.length) return;
+  curIdx=(i+curImgs.length)%curImgs.length;
+  const im=curImgs[curIdx];
+  const img=document.getElementById('mImg'); img.src=im[0]; img.alt=im[1]||'';
+  document.getElementById('mCount').textContent=(curIdx+1)+' / '+curImgs.length;
+  document.querySelectorAll('.m-thumbs img').forEach(t=>t.classList.remove('on'));
+  const th=document.getElementById('th'+curIdx); if(th) th.classList.add('on');
+}
+function nav(d){ showImg(curIdx+d); }
+function closeModal(){ document.getElementById('mask').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('mask').classList.contains('open'))return;
+  if(e.key==='Escape')closeModal();
+  if(e.key==='ArrowLeft')nav(-1);
+  if(e.key==='ArrowRight')nav(1);
+});
+</script>
 
 </body>
 </html>
